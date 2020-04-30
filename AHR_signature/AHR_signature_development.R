@@ -1,4 +1,14 @@
-# This files describes how the AHR signature was generated
+#!/usr/bin/env Rscript
+
+#################################################
+## Project: AHR IL4I1
+## Origin: https://github.com/ahmedasadik/AHR_IL4I1_manuscript/AHR_signature/
+## Date: Oct 2018
+## Author: Ahmed Sadik (a.sadik@dkfz.de)
+##
+## Description
+## This files describes how the AHR signature was generated
+################################################
 
 ## Load libraries
 library(purrr)
@@ -6,13 +16,13 @@ library(biomaRt)
 library(parallel)
 
 ## Source the functions and parameters files
-source("functions_and_parameters.R")
+source("./functions_and_parameters.R")
 
 #####################
 ## NLP AHR targets ##
 #####################
 ## These are the targets that were generated as a result of the text mining approach
-nlp_AHR <- read.delim("ahr_targets_filtered_abundances.csv")
+nlp_AHR <- read.delim("./Resources/ahr_targets_filtered_abundances.csv")
 colnames(nlp_AHR) <- c("gene", "freq")
 
 ## Extracting unique AHR targets and converting them to upper case
@@ -26,7 +36,7 @@ nlp_AHR_genes[c(51,80,122,207,423,447)] <- c("AR", "TH","F3", "HP","INFA","JUN")
 #######################
 ## These are the lists of differentially regulated genes acquired from curated datasets
 # GEO datasets
-sheet_path <- "selected_AHR_studies.xlsx"
+sheet_path <- "./Resources/selected_AHR_studies.xlsx"
 datasheets <- xlsx::loadWorkbook(sheet_path)
 sheets <- xlsx::getSheets(datasheets)
 
@@ -81,7 +91,7 @@ signal_df_genes_all <- signal_df$gene_sym %>% .[-grep("^ENST", .)] %>% c(.,signa
 ############
 ## These are the targets that have AHR binding sites as per the Sygnal database (tfbsdb.systemsbiology.net)
 # retrieve the AHR motif targets
-Sygnal_AHR <- list.files("Sygnal/", full.names = T)
+Sygnal_AHR <- list.files("./Resources/Sygnal/", full.names = T)
 Sygnal_AHR_files <- map(Sygnal_AHR, read.delim, sep=",", stringsAsFactors=F)
 Sygnal_AHR_eIDs <- Sygnal_AHR_files %>% map(.,function(x){x[,1]}) %>% unlist() %>% as.character()
 
@@ -92,7 +102,7 @@ Sygnal_AHR_genes <- unlist(mget(unique(Sygnal_AHR_eIDs), org.Hs.egSYMBOL,ifnotfo
 ## Annotation update as per HGNC ##
 ###################################
 # This was downloaded directly from HGNC on 04-12-2017
-hgnc <- read.delim("human_hgnc_annotation_file.txt")
+hgnc <- read.delim("./Resources/human_hgnc_annotation_file.txt")
 
 ## This is performed for all three target types
 cl <- makeCluster(no_cores)
