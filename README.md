@@ -11,7 +11,7 @@ Within this repository we present the (R-) scripts to process and analyse the da
 
 All analyses described here were carried out in R and hence can be performed on any operating system (windows, mac or linux). However, running the analysis on a linux distribution is preferred (e.g. ubuntu or centos) because some of the analysis require using multiple cores and are RAM intensive, which would require a computing cluster.
 
-The analyses can be performed in R starting from version 3.3.1 (Bug in Your Hair) and the corresponding bioconductor release. 
+The analyses can be performed in R starting from version 3.5.1 (Bug in Your Hair) and the corresponding bioconductor release. 
 
 libraries
 

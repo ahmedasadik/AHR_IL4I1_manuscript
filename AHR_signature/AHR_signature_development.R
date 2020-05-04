@@ -71,7 +71,7 @@ all_signals <- map(genes, function(gene_sym){
 
 signal_df <- do.call("rbind", all_signals)
 
-write.table(signal_df, "signal_df.txt", sep = "\t")
+write.table(signal_df, "./Results/AHR_signature/signal_df.txt", sep = "\t")
 
 ## Get the gene symbols of the features annotated with ensemble transcript IDs
 signal_df_genes_enst <- signal_df$gene_sym[grep("^ENST", signal_df$gene_sym)]
@@ -160,7 +160,7 @@ signal_df_genes_all_hgnc_annot_na <- rbind(signal_df_genes_all_hgnc_annot_na, da
 signal_df_genes_all_hgnc_annot_na <- signal_df_genes_all_hgnc_annot_na[!is.na(signal_df_genes_all_hgnc_annot_na$V1),]
 signal_df_genes_all_hgnc_annot_na <- signal_df_genes_all_hgnc_annot_na[!is.na(signal_df_genes_all_hgnc_annot_na$V2),]
 signal_df_genes_all_hgnc_annot_na <- signal_df_genes_all_hgnc_annot_na[which(duplicated(signal_df_genes_all_hgnc_annot_na$V1)==FALSE),]
-write.table(signal_df_genes_all_hgnc_annot_na,"AHR_genes_datasets.txt", sep = "\t")
+write.table(signal_df_genes_all_hgnc_annot_na,"./Results/AHR_signature/AHR_genes_datasets.txt", sep = "\t")
 
 ### Sygnal genes proofing after HGNC
 ## Sygnal_AHR_genes_hgnc_annot
@@ -171,7 +171,7 @@ problem_rows_Sygnal <- rownames(Sygnal_AHR_genes_hgnc_annot_na)[which(is.na(Sygn
 # correct the values of these values
 Sygnal_AHR_genes_hgnc_annot_na[problem_rows_Sygnal,2] <- problem_rows_Sygnal
 Sygnal_AHR_genes_hgnc_annot_na[problem_rows_Sygnal,1] <- c("LOC100287036")
-write.table(Sygnal_AHR_genes_hgnc_annot_na, "AHR_genes_Sygnal.txt", sep = "\t")
+write.table(Sygnal_AHR_genes_hgnc_annot_na, "./Results/AHR_signature/AHR_genes_Sygnal.txt", sep = "\t")
 
 ### nlp genes proofing after HGNC
 ## nlp_AHR_genes_hgnc_annot
@@ -206,16 +206,16 @@ nlp_AHR_genes_hgnc_annot_na2 <- nlp_AHR_genes_hgnc_annot_na2[-c(DEPP_idx, MT1E_i
 nlp_AHR_genes_hgnc_annot_na2 <- rbind(nlp_AHR_genes_hgnc_annot_na2, data.frame(V1=DEPP_gs,V2=DEPP_eids),
                                          data.frame(V1=MT1E_gs, V2=MT1E_eids), append=T)
 
-write.table(nlp_AHR_genes_hgnc_annot_na2, "AHR_genes_nlp.txt", sep = "\t")
+write.table(nlp_AHR_genes_hgnc_annot_na2, "./Results/AHR_signature/AHR_genes_nlp.txt", sep = "\t")
 
 ## Combining signal and Sygnal dataframes
 AHR_genes_datasets <- c(Sygnal_AHR_genes_hgnc_annot_na$V1, signal_df_genes_all_hgnc_annot_na$V1)%>% .[which(duplicated(.)==FALSE)]
 
 AHR_genes_datasets <- dplyr::full_join(Sygnal_AHR_genes_hgnc_annot_na,signal_df_genes_all_hgnc_annot_na)
 
-write.table(as.data.frame(AHR_genes_datasets), "./Signature/AHR_genes_ds_S.txt", sep = "\t", col.names = F)
+write.table(as.data.frame(AHR_genes_datasets), "./Results/AHR_signature/AHR_genes_ds_S.txt", sep = "\t", col.names = F)
 
 ## Overlapping genes to be used as a signature for AHR
 overlapping_genes <- AHR_genes_datasets[AHR_genes_datasets$V1 %in% nlp_AHR_genes_hgnc_annot_na2$V1,]
 colnames(overlapping_genes) <- c("Gene", "EID")
-write.table(overlapping_genes, "overlapping_AHR_signature_genes.txt", sep = "\t")
+write.table(overlapping_genes, "./Results/AHR_signature/overlapping_AHR_signature_genes.txt", sep = "\t")
