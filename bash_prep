@@ -11,6 +11,9 @@ mkdir Zenodo_download
 cd Zenodo_download
 # download necessary files from the zendo repository
 wget https://zenodo.org/record/[doi-goes-here]/files/[file1.txt]
+wget https://zenodo.org/record/[doi-goes-here]/files/[file2.txt]
+wget https://zenodo.org/record/[doi-goes-here]/files/[file3.txt]
+
 cd ..
 
 # creating workflow directories
