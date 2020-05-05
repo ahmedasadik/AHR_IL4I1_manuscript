@@ -16,8 +16,6 @@
 
 my_seed <- 0860
 no_cores <- parallel::detectCores() -1
-nWGCNAThreads_param <- parallel::detectCores() -1
-nWGCNAThreads_param_SKCM <- parallel::detectCores() -1
 
 # Selected enzymes of the Tryptophan degradation pathway
 trp_enz_sel <- c("IL4I1", "IDO1", "IDO2", "TDO2", "DDC", "TPH1", "TPH2")
@@ -79,7 +77,7 @@ empty_as_na <- function(x){
   ifelse(as.character(x)!="", x, NA)
 }
 
-# Functions to download and process the TCGA data and save it as an rda file
+# Functions to download and process the TCGA data and save it as an RData file
 counts_download_FUN <- function(pid){
   query <- TCGAbiolinks::GDCquery(project = pid,
                                   data.category = "Transcriptome Profiling",
@@ -104,7 +102,6 @@ fpkm_download_FUN <- function(pid){
   
 # Function that converts FPKMs to TPMs
 fpkmToTpm <- function(fpkm){(fpkm / sum(fpkm)) * 1e6}
-
 
 ## Plot annotation function
 annt_fun <- function(sig_diff_s, l){
