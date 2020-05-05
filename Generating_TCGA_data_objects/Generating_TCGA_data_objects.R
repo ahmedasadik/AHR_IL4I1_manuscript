@@ -28,26 +28,22 @@ source("functions_and_parameters.R")
 ###############################
 ## Downloading the TCGA data ##
 ###############################
-
-## Downloading the TCGA data from the GDC portal using TCGABiolinks
 #######################
 ## HTSeq-Counts data ##
 #######################
-
+## This downloads the counts RData objects into the TCGA_counts/RData folder
+setwd("./TCGAbiolinks_downloads/TCGA_counts")
 cl <- makeCluster(no_cores)
 parLapply(cl=cl, project_ids, counts_download_FUN)
 stopCluster(cl)
+setwd("../")
 
 ## Preparing the data into DGElists 
 # Extracting the assay data and creating DGElists
 # The counts data were filtered for only primary tumors
-# The TARGET and LAML datasets were removed because they required a special download token
-# @ahmed - can anyone donwload the LAML and TARGET data? If so, provide a download link or instructions
 
-tcga_datasests_paths <- list.files("./TCGA_counts/RDats/", full.names = TRUE)
-tcga_datasests_names <- list.files("./TCGA_counts/RDats/") %>% gsub("Tr.*","",.) %>% gsub("\\-", "_",.)
-
-# @ahmed - you provide the functions for downloading the TCGA data, but your first command is to load them from the file system. I suggest that you include the commands used to download the data to the file system (/TCGA_counts/Rdats)
+tcga_datasests_paths <- list.files("./TCGAbiolinks_downloads/TCGA_counts/RDats/", full.names = TRUE)
+tcga_datasests_names <- list.files("./TCGAbiolinks_downloads/TCGA_counts/RDats/") %>% gsub("Tr.*","",.) %>% gsub("\\-", "_",.)
 
 # read all tcga summarized experiment data
 TCGA_datasest <- map(tcga_datasests_paths, load.Rdata)
@@ -74,7 +70,7 @@ tcga_coldata_TP <- map2(TCGA_coldata,samplesTP_idcs,function(x,y){x[match(y, x$b
 
 # Creating DGE objects for all tumors
 TCGA_DGE <- map2(tcga_cnts_TP, tcga_coldata_TP, function(x,y,z){DGEList(counts = x, samples = y, genes = z)}, z=TCGA_rowdata[[1]])
-saveRDS(TCGA_DGE, "./RDS/TCGA_DGE.rds")
+saveRDS(TCGA_DGE, "./Results/RDS/TCGA_DGE.rds")
 
 ## Generating an object only for TCGA counts data that were converted to log2(cpm+1)
 TCGA_counts <- map(TCGA_datasest, function(x){
@@ -85,14 +81,14 @@ TCGA_counts <- map(TCGA_datasest, function(x){
   rownames(counts_TP) <- row_data$external_gene_name[match(rownames(counts_TP), row_data$ensembl_gene_id)]
   counts_cpm <- edgeR::cpm(counts_TP, prior.count=1, log=T)
 })
-saveRDS(TCGA_counts, "./RDS/TCGA_counts.rds")
+saveRDS(TCGA_counts, "./Results/RDS/TCGA_counts.rds")
 
 ## Generating an object only for TCGA coldata data that were converted to log2(cpm+1)
 TCGA_colData <- map2(TCGA_counts, TCGA_datasest, function(cnts_mat, col_df){
   col_data <-  SummarizedExperiment::colData(col_df)
   new_ColData <- col_data[match(colnames(cnts_mat), col_data$barcode),]
 })
-saveRDS(TCGA_colData, "./RDS/TCGA_coldata.rds")
+saveRDS(TCGA_colData, "./Results/RDS/Results/TCGA_coldata.rds")
 
 ## Generating a normalized counts DGElist using TMM normalization and voom. The data was filtered first.
 # Voom to prepare the counts for WGCNA
@@ -105,7 +101,7 @@ TCGA_DGE_voom <- map(TCGA_DGE, function(dge){
 })
 
 # Saving the TCGA voomed DGE to disk
-saveRDS(TCGA_DGE_voom, "./RDS/TCGA_DGE_voom.rds")
+saveRDS(TCGA_DGE_voom, "./Results/RDS/TCGA_DGE_voom.rds")
 
 ## Generate the voomed TCGA dataset that will be used for WGCNA
 TCGA_DGE_voom_annots <- map(TCGA_DGE_voom, function(dge){
@@ -113,60 +109,56 @@ TCGA_DGE_voom_annots <- map(TCGA_DGE_voom, function(dge){
   dge$E <- t(dge$E)
   dge
 })
-saveRDS(TCGA_DGE_voom_annots, "./RDS/TCGA_DGE_voom_annot.rds")
+saveRDS(TCGA_DGE_voom_annots, "./Results/RDS/TCGA_DGE_voom_annot.rds")
 
 #####################
 ## HTSeq-FPKM data ##
 #####################
+## This downloads the FPKM files in the TCGA_FPKM/RData that will be read later to generate the TPM Object
+setwd("./TCGAbiolinks_downloads/TCGA_FPKM")
 cl <- makeCluster(no_cores)
 parLapply(cl=cl, project_ids, counts_download_FUN)
 stopCluster(cl)
-
+setwd("../")
 # List files of TCGA datasets
-tcga_datasets_paths <- list.files("./TCGA_FPKM/RDats", full.names = T)
-tcga_datasets_names <- list.files("./TCGA_FPKM/RDats") %>% gsub("Tr.*","",.) %>% gsub("\\-", "_",.)
-
-@ ahmed - again, there is no clear description of how the FPKM files were downloaded
+FPKM_tcga_datasets_paths <- list.files("./TCGAbiolinks_downloads/TCGA_FPKM/RDats", full.names = T)
+FPKM_tcga_datasets_names <- list.files("./TCGAbiolinks_downloads/TCGA_FPKM/RDats") %>% gsub("Tr.*","",.) %>% gsub("\\-", "_",.)
 
 # Loading all HT-Seq FPKMs datasets
-TCGA_datasets <- map2(tcga_datasets_paths, tcga_datasets_names, load.Rdata)
-names(TCGA_datasets) <- tcga_datasests_names
+FPKM_TCGA_datasets <- map2(FPKM_tcga_datasets_paths, FPKM_tcga_datasets_names, load.Rdata)
+names(FPKM_TCGA_datasets) <- FPKM_tcga_datasests_names
 
 # generate the FPKM data
-TCGA_fpkmdata <- map(TCGA_datasest, SummarizedExperiment::assay)
+TCGA_fpkmdata <- map(FPKM_TCGA_datasest, SummarizedExperiment::assay)
 
 # generate the coldata
-TCGA_coldata <- map(TCGA_datasest, SummarizedExperiment::colData)
-names(TCGA_coldata) <- names(TCGA_fpkmdata)
+FPKM_TCGA_coldata <- map(FPKM_TCGA_datasest, SummarizedExperiment::colData)
+names(FPKM_TCGA_coldata) <- names(TCGA_fpkmdata)
 
 # generate the rowdata (this is identical for all samples across all tumors)
-TCGA_rowdata <- map(TCGA_datasest, SummarizedExperiment::rowData)
-names(TCGA_rowdata) <- names(TCGA_fpkmdata)
+FPKM_TCGA_rowdata <- map(FPKM_TCGA_datasest, SummarizedExperiment::rowData)
+names(FPKM_TCGA_rowdata) <- names(TCGA_fpkmdata)
 
 # generate the TP sample indeces
-samplesTP_idcs <- map(TCGA_coldata, function(cnts){TCGAbiolinks::TCGAquery_SampleTypes(barcode = cnts$barcode,typesample = c("TP"))}) 
-names(samplesTP_idcs) <- names(TCGA_coldata)
+FPKM_samplesTP_idcs <- map(FPKM_TCGA_coldata, function(cnts){TCGAbiolinks::TCGAquery_SampleTypes(barcode = cnts$barcode, typesample = c("TP"))}) 
+names(FPKM_samplesTP_idcs) <- names(FPKM_TCGA_coldata)
 
 # filter TCGA FPKMs and coldata for TP samples only
-tcga_fpkm_TP <- map2(TCGA_fpkmdata,samplesTP_idcs,function(x,y){x[,match(y, colnames(x))]})
-tcga_coldata_TP <- map2(TCGA_coldata,samplesTP_idcs,function(x,y){x[match(y, x$barcode),]})
+tcga_fpkm_TP <- map2(TCGA_fpkmdata, FPKM_samplesTP_idcs, function(x,y){x[,match(y, colnames(x))]})
+FPKM_tcga_coldata_TP <- map2(FPKM_TCGA_coldata, FPKM_samplesTP_idcs,function(x,y){x[match(y, x$barcode),]})
 
 # Creating DGE objects for all tumors
-TCGA_fpkm_DGE <- map2(tcga_fpkm_TP, tcga_coldata_TP, function(x,y,z){DGEList(counts = x, samples = y, genes = z)}, z=TCGA_rowdata[[1]])
-saveRDS(TCGA_fpkm_DGE, "./RDS/TCGA_fpkms_all.rds")
+TCGA_fpkm_DGE <- map2(tcga_fpkm_TP, FPKM_tcga_coldata_TP, function(x,y,z){DGEList(counts = x, samples = y, genes = z)}, z=FPKM_TCGA_rowdata[[1]])
+saveRDS(TCGA_fpkm_DGE, "./Results/RDS/TCGA_fpkms_all.rds")
 
 ##############
 ## TPM data ##
 ##############
 ## Converting FPKMs to TPMs, which can be used later for Cibersort or other plots if need be.
-TCGA_TPMs <- map(TCGA_fpkms, safely(function(dge){
+TCGA_TPMs <- map(TCGA_fpkms_DGE, safely(function(dge){
   dge$counts <- fpkmToTpm(dge$counts)
   colnames(dge$counts) <- paste("Pt", 1:length(colnames(dge$counts)))
   genes <- dge$genes$external_gene_name[match(rownames(dge$counts), dge$genes$ensembl_gene_id)]
   tpm_df <- data.frame(GeneSymbol=genes, dge$counts, stringsAsFactors = F)
 }))
-saveRDS(TCGA_TPMs, "./RDS/TCGA_TPMs.rds")
-
-## Saving individual files to use later for Cibersort
-walk2(TCGA_TPMs, paste(names(TCGA_TPMs), "_TPM.txt"), function(x,y){
-  write.table(x=x$result,file=y, row.names=FALSE, sep="\t", quote=FALSE)})
+saveRDS(TCGA_TPMs, "./Results/RDS/TCGA_TPMs.rds")

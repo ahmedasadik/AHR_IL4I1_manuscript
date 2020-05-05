@@ -81,27 +81,25 @@ empty_as_na <- function(x){
 
 # Functions to download and process the TCGA data and save it as an rda file
 counts_download_FUN <- function(pid){
-  ## optional when running on the DKFZ cluster
-  # options(RCurlOptions=list(proxy="www-int2.inet.dkfz-heidelberg.de:80", http.version=1))
   query <- TCGAbiolinks::GDCquery(project = pid,
                                   data.category = "Transcriptome Profiling",
                                   experimental.strategy = "RNA-Seq",
                                   legacy = FALSE,
-                                  workflow.type = "HTSeq - counts")
+                                  workflow.type = "HTSeq - Counts")
   TCGAbiolinks::GDCdownload(query, method = "client")
-  TCGAbiolinks::GDCprepare(query, save = T)
+  TCGAbiolinks::GDCprepare(query, save = T,
+                           save.filename=paste0("./RDats/", query$project, gsub(" ", "_", query$data.category),gsub(" ","_",date()),".RData"))
 }
 
 fpkm_download_FUN <- function(pid){
-  ## optional when running on the DKFZ cluster
-  # options(RCurlOptions=list(proxy="www-int2.inet.dkfz-heidelberg.de:80", http.version=1))
   query <- TCGAbiolinks::GDCquery(project = pid,
                                   data.category = "Transcriptome Profiling",
                                   experimental.strategy = "RNA-Seq",
                                   legacy = FALSE,
                                   workflow.type = "HTSeq - FPKM")
-  TCGAbiolinks::GDCdownload(query, method = "client")
-  TCGAbiolinks::GDCprepare(query,save = T)
+  TCGAbiolinks::GDCdownload(query)
+  TCGAbiolinks::GDCprepare(query, save = T,
+                           save.filename=paste0("./RDats/", query$project, gsub(" ", "_", query$data.category),gsub(" ","_",date()),".RData"))
 }
 
 # Function that converts FPKMs to TPMs
