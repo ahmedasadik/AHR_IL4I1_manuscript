@@ -1,29 +1,37 @@
-# This script describes how modules associating with AHR activation are defined
-# This is achieved by testing the association of AHR activation (GSVA scores) with the WGCNA modules.
-# To overcome bias, we will try two different methods and take the overlap between them.
+#!/usr/bin/env Rscript
+
+#################################################
+## Project: AHR LAAO
+## Origin: https://github.com/ahmedasadik/Project_AHR_LAAO/tree/master/AHR_scripts
+## Date: Oct 2018
+## Author: Ahmed Sadik (a.sadik@dkfz.de)
+##
+## Description
+## This script describes how modules associating with AHR activation are defined
+## This is achieved by testing the association of AHR activation (GSVA scores) with the WGCNA modules.
+## To overcome bias, we will try two different methods and take the overlap between them.
+#################################################
 
 ## Load libraries
 library(purrr)
 library(globaltest)
 
+## Source the functions and parameters files
+source("./functions_and_parameters.R")
+
 ## Data
 # TCGA_modules
-TCGA_toms <- readRDS("./RDS/TCGA_TOMS_bicor.rds")
+TCGA_toms <- readRDS("./Zenodo_download/TCGA_TOMS_bicor.rds")
 
 # TCGA_voom
-TCGA_voom <- readRDS("./RDS/TCGA_DGE_voom_annots.rds")
+TCGA_voom <- readRDS("./Zenodo_download/TCGA_DGE_voom_annots.rds")
 
 # TCGA_GSVA
-TCGA_gsva <- readRDS("./RDS/TCGA_GSVA_scores_safely.rds")
+TCGA_gsva <- readRDS("./Zenodo_download/TCGA_GSVA_scores_safely.rds")
 # Extract the GSVA scores from the safely run output
 TCGA_GSVA <- TCGA_gsva[tcga_names]
 TCGA_GSVA <- map(TCGA_GSVA, function(x){x$result})
 
-# tcga_names
-tcga_names <- c("TCGA_ACC", "TCGA_BLCA", "TCGA_BRCA", "TCGA_CESC", "TCGA_COAD", "TCGA_CHOL", "TCGA_COAD", "TCGA_DLBC",
-                "TCGA_ESCA", "TCGA_GBM", "TCGA_HNSC", "TCGA_KICH", "TCGA_KIRC", "TCGA_KIRP", "TCGA_LGG", "TCGA_LIHC",
-                "TCGA_LUAD", "TCGA_LUSC", "TCGA_MESO", "TCGA_OV", "TCGA_PAAD", "TCGA_PCPG", "TCGA_PRAD", "TCGA_READ",
-                "TCGA_SARC", "TCGA_SKCM", "TCGA_STAD", "TCGA_TGCT", "TCGA_THCA", "TCGA_THYM", "TCGA_UCEC", "TCGA_UCS", "TCGA_UVM")
 
 #########################
 ## Pearson correlation ##
@@ -57,7 +65,7 @@ TCGA_MEs_GSVA_cors <- map2(TCGA_toms, TCGA_GSVA, function(tom, gsva,gene_name,co
   cor_df <- data.frame(cor_df, stringsAsFactors = F)
 },gene_name="AHR_signature", cor_cutoff=0.2, cor_pvalue=0.05)
 
-saveRDS(TCGA_MEs_GSVA_cors, "./RDS/TCGA_MEs_GSVA_cors.rds")
+saveRDS(TCGA_MEs_GSVA_cors, "./Results/RDS/TCGA_MEs_GSVA_cors.rds")
 
 #################
 ## Global test ##
@@ -66,8 +74,8 @@ saveRDS(TCGA_MEs_GSVA_cors, "./RDS/TCGA_MEs_GSVA_cors.rds")
 TCGA_MEs_GSVA_GTs_nodir <- map2(1:32,names(TCGA_toms),function(i, p_n, gsva, toms){
   gsva_sc <- gsva[[i]][1,]
   test <- gt(gsva_sc~1, ~., data=toms[[i]]$MEs, directional = FALSE)
-  test_res <- covariates(test, pdf = paste("./Figures/GlobalTest/non_dir_covar_", p_n, sep = ""), zoom = TRUE)
-  subjects(test, pdf = paste("./Figures/GlobalTest/non_dir_subjects_", p_n, sep = ""))
+  test_res <- covariates(test, pdf = paste("./Results/GlobalTest/non_dir_covar_", p_n, sep = ""), zoom = TRUE)
+  subjects(test, pdf = paste("./Results/GlobalTest/non_dir_subjects_", p_n, sep = ""))
   test_res_ext <- extract(test_res)
   test_leafs <- leafNodes(test_res_ext)
   res <- cbind(test_leafs@result, test_leafs@extra)
@@ -96,11 +104,11 @@ TCGA_MEs_GSVA_GT_overlap_nodir <- map2(TCGA_MEs_GSVA_GTs_not_null_sig05_nodir, T
   Cor_MEs <- y$modules
   GT_MEs[match(Cor_MEs, GT_MEs)] %>% .[!is.na(.)]
 })
-saveRDS(TCGA_MEs_GSVA_GT_overlap_nodir , "./RDS/TCGA_MEs_GSVA_GT_overlap_nodir.rds")
+saveRDS(TCGA_MEs_GSVA_GT_overlap_nodir , "./Results/RDS/TCGA_MEs_GSVA_GT_overlap_nodir.rds")
 
 # Module Eigen genes
 GT_GSVA_overlap_MEs <- map2(TCGA_MEs_GSVA_GT_overlap_nodir, TCGA_toms, function(x,y){
   y$MEs[,match(x, gsub("ME","",colnames(y$MEs)))]
 })
-saveRDS(GT_GSVA_overlap_MEs, "./RDS/GT_GSVA_overlap_MEs.rds")
+saveRDS(GT_GSVA_overlap_MEs, "./Results/RDS/GT_GSVA_overlap_MEs.rds")
 

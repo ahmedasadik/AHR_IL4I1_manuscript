@@ -14,7 +14,7 @@ wget https://zenodo.org/record/[doi-goes-here]/files/[file1.txt]
 wget https://zenodo.org/record/[doi-goes-here]/files/[file2.txt]
 cd ..
 
-# creating results directories
+# creating workflow directories
 mkdir Results TCGAbiolinks_downloads
 mkdir ./Results/AHR_signature ./Results/AHR_signature_validations ./Results/RDS 
 mkdir ./TCGAbiolinks_downloads/TCGA_counts ./TCGAbiolinks_downloads/TCGA_counts/RDats ./TCGAbiolinks_downloads/TCGA_FPKM ./TCGAbiolinks_downloads/TCGA_FPKM/RDats

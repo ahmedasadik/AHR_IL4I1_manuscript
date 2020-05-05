@@ -101,7 +101,7 @@ fpkm_download_FUN <- function(pid){
   TCGAbiolinks::GDCprepare(query, save = T,
                            save.filename=paste0("./RDats/", query$project, gsub(" ", "_", query$data.category),gsub(" ","_",date()),".RData"))
 }
-
+  
 # Function that converts FPKMs to TPMs
 fpkmToTpm <- function(fpkm){(fpkm / sum(fpkm)) * 1e6}
 
