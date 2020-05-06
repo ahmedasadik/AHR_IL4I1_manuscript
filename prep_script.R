@@ -17,7 +17,7 @@ dep_packs <- c("BiocManager","limma", "purrr", "oligo", "pd.hugene.2.0.st", "RCo
                "affycoretools", "biomaRt", "GSEABase", "clusterProfiler", "ggplot2", "gplots",
                "org.Hs.eg.db", "sva", "parallel", "ggpubr", "reshape", "topGO", "remotes",
                "WGCNA", "GEOquery", "edgeR", "rJava", "circlize", "ComplexHeatmap", "parallel",
-               "dplyr", "xlsx", "corrplot", "psych", "Hmisc"
+               "dplyr", "xlsx", "corrplot", "psych", "Hmisc", "factoextra", "FactoMineR"
                )
 
 ipak(dep_packs)

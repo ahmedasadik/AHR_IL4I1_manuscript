@@ -1,0 +1,702 @@
+Tumor,modules,Angiogenesis,Drug metabolsim,External stress response,Hemopoiesis,Immune modulation,Lipid metabolsim,Motility
+ACC ,darkolivegreen,1,0,0,0,0,0,0
+ACC ,firebrick4,0,0,0,0,0,0,0
+ACC ,indianred4,0,0,0,0,0,0,0
+ACC ,lightcoral,0,0,0,0,0,0,0
+ACC ,lightyellow,0,0,0,0,0,0,0
+ACC ,mediumorchid,1,1,0,0,0,0,0
+ACC ,mediumpurple4,0,0,0,0,0,0,0
+ACC ,midnightblue,0,0,0,0,0,0,0
+ACC ,navajowhite2,0,0,0,0,0,0,0
+ACC ,orange ,0,0,0,0,0,0,0
+ACC ,purple,1,0,0,0,0,0,1
+ACC ,royalblue,0,0,0,0,0,0,0
+ACC ,tan ,0,0,0,0,0,0,0
+ACC ,turquoise ,1,0,1,1,1,0,1
+BLCA ,black,0,0,0,0,0,0,0
+BLCA ,blue,0,0,1,0,1,0,1
+BLCA ,brown ,0,0,0,0,0,0,0
+BLCA ,cyan,0,0,0,0,0,0,0
+BLCA ,darkgreen ,0,0,0,0,0,0,0
+BLCA ,darkgrey,1,0,0,0,0,0,1
+BLCA ,darkolivegreen,0,0,0,0,0,0,0
+BLCA ,darkorange ,0,0,0,0,0,0,0
+BLCA ,darkred,0,0,0,0,0,0,0
+BLCA ,darkturquoise,0,0,0,0,0,0,0
+BLCA ,grey ,0,0,0,0,0,0,0
+BLCA ,lightcyan,0,0,0,0,0,0,0
+BLCA ,lightgreen,0,0,0,0,1,0,0
+BLCA ,lightyellow,0,0,1,1,1,0,0
+BLCA ,magenta ,0,0,0,0,0,0,0
+BLCA ,midnightblue,0,0,0,0,0,0,0
+BLCA ,orange ,0,0,0,0,0,0,0
+BLCA ,pink,0,0,0,0,0,0,0
+BLCA ,plum1,0,0,0,0,0,0,0
+BLCA ,red,1,1,0,0,0,0,1
+BLCA ,royalblue,1,0,0,0,0,0,0
+BLCA ,salmon,0,0,0,0,0,0,0
+BLCA ,tan,0,0,0,0,0,0,0
+BLCA ,turquoise ,0,1,0,0,0,0,0
+BLCA ,white ,0,0,0,0,0,0,0
+BLCA ,yellow,0,0,0,0,0,0,0
+BRCA ,black,0,0,0,0,0,0,0
+BRCA ,brown,0,0,1,0,1,0,1
+BRCA ,cyan,1,0,0,0,0,0,1
+BRCA ,darkgreen,1,0,0,0,0,0,0
+BRCA ,darkolivegreen,0,0,0,0,0,1,0
+BRCA ,darkred,0,0,0,0,0,0,0
+BRCA ,greenyellow,1,0,0,0,0,0,0
+BRCA ,grey,0,1,0,0,0,0,0
+BRCA ,ivory,0,0,0,0,0,0,0
+BRCA ,lightcyan,0,0,0,0,0,0,0
+BRCA ,lightcyan1,0,0,0,0,0,0,0
+BRCA ,lightgreen,0,0,0,0,0,0,0
+BRCA ,lightsteelblue1,0,0,0,0,0,0,0
+BRCA ,lightyellow,0,0,0,0,0,0,0
+BRCA ,midnightblue,0,0,0,0,0,0,0
+BRCA ,navijowhite2,0,0,0,0,0,0,0
+BRCA ,orange,0,0,0,0,0,0,0
+BRCA ,organgered4,0,0,0,0,1,0,0
+BRCA ,paleturquoise,0,0,0,0,1,0,0
+BRCA ,pink,1,1,0,0,0,0,1
+BRCA ,purple,0,0,0,0,0,0,0
+BRCA ,red,0,0,0,0,1,0,0
+BRCA ,royalblue ,0,0,0,0,0,0,0
+BRCA ,salmon ,0,0,0,0,0,0,0
+BRCA ,salmon4,0,0,1,0,0,0,0
+BRCA ,skyblue3,0,0,1,1,1,0,0
+BRCA ,steelblue,0,0,0,0,1,0,0
+BRCA ,tan,0,0,0,0,0,0,0
+BRCA ,violet,0,0,0,0,0,0,0
+BRCA ,yellowgreen ,0,0,0,0,0,0,0
+CESC,antiquewhite4,0,0,0,0,0,0,0
+CESC,bisque4,0,0,0,0,0,0,0
+CESC,black,0,0,0,0,0,0,0
+CESC,blue,0,0,1,0,1,0,1
+CESC,brown,0,0,0,0,0,0,0
+CESC,brown2,0,0,0,0,0,0,0
+CESC,coral2,0,0,0,0,0,0,0
+CESC,darkolivegreen,0,0,0,0,0,0,0
+CESC,darkorange,0,0,0,0,1,0,0
+CESC,darkred,0,0,0,0,0,0,0
+CESC,firebrick4,0,0,0,0,0,0,0
+CESC,floralwhite ,0,0,0,0,0,0,0
+CESC,green,0,0,0,0,0,0,0
+CESC,grey,0,0,0,0,0,0,0
+CESC,greenyellow,0,0,0,0,0,0,0
+CESC,honeydew1,0,0,0,0,0,0,0
+CESC,indianred4,0,0,0,0,0,0,0
+CESC,lavenderblush3,0,0,0,0,0,0,0
+CESC,lightcoral,0,0,0,0,0,0,0
+CESC,lightgreen,0,0,0,0,0,0,0
+CESC,lightpink4,0,0,0,0,0,0,0
+CESC,lightsteelblue1,0,0,0,0,0,0,0
+CESC,lightyellow,1,0,0,0,0,0,1
+CESC,magenta ,0,0,1,0,0,0,0
+CESC,magenta4,0,0,0,0,0,0,0
+CESC,maroon ,0,0,0,0,0,0,0
+CESC,midnightblue,1,0,0,0,0,0,1
+CESC,mediumpurple3,0,0,0,0,0,0,0
+CESC,navajowhite2,0,0,0,0,0,0,0
+CESC,orange ,0,0,0,0,0,0,0
+CESC,orangered4,0,0,0,0,0,0,0
+CESC,paleturquoise,0,0,0,0,0,0,0
+CESC,pink,0,0,0,0,0,0,0
+CESC,plum1,0,0,0,0,0,0,0
+CESC,plum2,0,0,1,0,1,0,0
+CESC,purple,0,0,0,0,0,0,0
+CESC,red,1,0,0,0,0,0,1
+CESC,royalblue ,0,0,0,0,0,0,0
+CESC,salmon2,0,0,1,0,0,0,0
+CESC,skyblue3,0,0,0,0,0,0,0
+CESC,tan,1,1,0,0,0,0,1
+CESC,thistle2,0,0,0,0,0,0,0
+CESC,turquoise ,0,0,1,0,0,0,0
+CESC,white,0,0,0,0,0,0,0
+CESC,yellowgreen,0,0,0,0,0,0,0
+CHOL,blue,1,0,0,0,0,0,1
+CHOL,darkolivegreen,0,0,0,0,0,0,0
+CHOL,darkred,0,0,0,0,0,0,0
+CHOL,darkturquoise,0,0,0,0,0,0,0
+CHOL,grey60,0,0,0,0,0,0,0
+CHOL,maroon ,0,0,0,0,0,0,0
+CHOL,mediumpurple3,0,0,0,0,0,0,0
+CHOL,paleturquoise,0,0,0,0,0,0,0
+COAD,black,0,0,0,0,0,0,0
+COAD,darkolivegreen ,0,0,0,0,0,0,0
+COAD,darkorange2,0,0,0,0,0,0,0
+COAD,darkred,0,0,0,1,1,0,0
+COAD,darkslateblue,0,0,0,0,1,0,0
+COAD,darkturquoise,0,0,0,0,1,0,0
+COAD,lightgreen ,0,0,0,0,0,0,0
+COAD,magenta ,0,0,0,0,0,0,0
+COAD,organgered4,0,0,0,0,0,0,0
+COAD,pink,0,0,0,0,0,0,0
+COAD,plum2,0,0,0,0,0,0,0
+COAD,purple,0,0,0,0,0,0,0
+COAD,red,1,0,0,0,0,0,1
+COAD,steelblue ,0,0,0,0,1,0,0
+COAD,thistele2,0,0,1,0,1,0,0
+COAD,turquoise ,1,1,0,0,0,0,1
+COAD,yellow,0,0,1,0,1,0,1
+COAD,yellowgreen ,0,0,0,0,0,0,0
+DLBC ,blue,0,0,0,0,0,0,0
+DLBC ,brown,0,0,0,0,0,0,0
+DLBC ,cyan,0,0,1,0,1,0,0
+DLBC ,darkgreen ,0,0,0,0,0,0,0
+DLBC ,darkred,1,0,0,0,0,0,0
+DLBC ,darkturquoise,1,0,0,0,0,0,0
+DLBC ,grey60,0,0,0,0,0,0,1
+DLBC ,magenta ,0,0,0,0,0,0,0
+DLBC ,midnightblue,1,0,0,0,0,0,0
+DLBC ,purple,0,0,1,0,1,0,1
+DLBC ,turquoise ,0,0,0,0,0,0,0
+DLBC ,white ,0,0,0,0,0,0,0
+DLBC ,yellow ,0,0,0,0,0,0,0
+ESCA ,blue,0,0,0,0,0,0,0
+ESCA ,brown,0,0,0,0,0,0,0
+ESCA ,grey,0,0,0,0,0,0,0
+ESCA ,lightcyan ,0,0,0,0,0,0,0
+ESCA ,plum2,0,0,0,0,0,0,0
+ESCA ,red,0,0,0,0,0,1,0
+ESCA ,yellowgreen ,0,0,0,0,0,0,0
+GBM ,bisque4,0,0,0,0,0,0,0
+GBM ,black,0,0,1,0,0,0,0
+GBM ,blue,0,0,1,1,1,1,1
+GBM ,cyan ,0,0,0,0,1,0,0
+GBM ,darkgrey,0,0,1,0,0,0,1
+GBM ,darkmagenta ,1,0,0,0,0,0,0
+GBM ,darkorange,0,0,0,0,1,0,0
+GBM ,grey,0,0,0,0,0,0,0
+GBM ,grey60,0,0,0,0,0,0,0
+GBM ,ivory,0,1,1,0,0,0,0
+GBM ,lightyellow,0,0,0,0,0,0,0
+GBM ,orange ,0,0,0,0,0,0,0
+GBM ,paleturquoise,0,0,0,1,1,0,0
+GBM ,pink,0,0,0,0,0,0,1
+GBM ,purple,0,0,0,0,0,0,0
+GBM ,saddlebrown,0,0,0,0,0,0,0
+GBM ,sienna3,0,0,0,0,0,0,0
+GBM ,skyblue,1,1,0,0,0,0,0
+GBM ,skyblue2 ,0,0,1,0,1,0,1
+GBM ,steelblue,0,1,0,0,0,0,0
+GBM ,turquoise ,0,0,0,0,0,0,0
+GBM ,violet,0,0,0,0,0,0,0
+HNSC,black,0,0,0,0,0,0,0
+HNSC,blue,0,0,1,1,1,0,1
+HNSC,brown,0,0,0,0,0,0,0
+HNSC,brown4 ,0,0,0,0,0,0,0
+HNSC,cyan,1,0,0,0,0,0,1
+HNSC,coral2,0,0,0,0,0,0,0
+HNSC,darkgreen,0,0,1,0,1,0,0
+HNSC,darkgrey ,0,0,0,0,0,0,0
+HNSC,darkmagenta ,0,0,0,0,0,0,0
+HNSC,darkolivegreen,0,0,0,0,0,0,0
+HNSC,green,0,0,0,0,1,0,0
+HNSC,greenyellow,1,0,0,0,0,0,1
+HNSC,grey ,0,1,0,0,0,0,0
+HNSC,grey60,0,0,0,0,0,0,0
+HNSC,ivory ,0,0,0,0,0,0,0
+HNSC,lavenderblush3,0,0,0,0,0,0,0
+HNSC,lightcyan ,0,0,0,0,0,0,0
+HNSC,lightcyan1 ,0,0,0,0,0,0,0
+HNSC,lightgreen ,0,0,0,0,0,0,0
+HNSC,lightpink4,0,0,0,0,0,0,0
+HNSC,lightsteelblue1,0,0,0,0,0,0,0
+HNSC,magenta ,0,0,0,0,0,0,0
+HNSC,mediumpurple3 ,0,0,0,0,0,0,0
+HNSC,midnightblue,0,0,0,0,0,0,0
+HNSC,orange,0,0,0,0,0,0,0
+HNSC,orangered4,0,0,0,0,0,0,0
+HNSC,paleturquoise,0,0,0,0,0,0,0
+HNSC,pink,0,0,1,0,1,0,0
+HNSC,plum2,0,0,0,0,0,0,0
+HNSC,red,0,0,0,0,0,0,0
+HNSC,royalblue,0,0,0,0,0,0,0
+HNSC,saddlebrown,0,0,0,0,0,0,0
+HNSC,salmon ,0,0,0,0,0,0,0
+HNSC,sienna3 ,0,0,0,0,0,0,0
+HNSC,skyblue,0,0,0,0,0,0,0
+HNSC,skyblue2 ,0,0,1,0,0,0,0
+HNSC,steelblue,0,0,0,0,0,0,0
+HNSC,tan,0,0,0,0,0,0,0
+HNSC,thistle2,0,0,0,0,0,0,0
+HNSC,turquoise ,1,1,0,0,0,0,1
+HNSC,violet ,0,0,0,0,0,0,0
+HNSC,yellow,0,0,0,0,0,0,0
+HNSC,yellow4,0,0,0,0,0,0,0
+HNSC,yellowgreen,0,0,0,0,0,0,0
+KICH,brown4 ,0,0,0,0,0,0,0
+KICH,darkgreen ,0,0,0,0,0,0,0
+KICH,lightcyan ,1,0,0,0,0,0,1
+KICH,lightyellow,0,0,0,0,0,0,0
+KICH,magenta ,0,0,0,0,0,0,0
+KICH,skyblue,0,0,0,0,0,0,0
+KICH,turquoise ,0,0,1,0,1,0,1
+KICH,yellow ,0,0,0,0,0,0,0
+KIRC,black,1,0,0,0,0,0,1
+KIRC,blue,0,0,0,0,0,0,0
+KIRC,brown,0,0,0,0,0,0,0
+KIRC,cyan ,0,0,0,0,0,0,0
+KIRC,green ,0,0,0,0,0,0,0
+KIRC,grey,0,1,1,0,0,0,0
+KIRC,grey60,0,0,0,0,0,0,0
+KIRC,lightcyan ,0,0,0,0,0,0,0
+KIRC,lightyellow ,0,0,0,0,0,0,0
+KIRC,midnightblue,0,1,0,0,0,0,0
+KIRC,pink,1,0,0,0,0,0,1
+KIRC,red,0,0,1,1,1,0,0
+KIRC,salmon,0,0,0,0,1,0,0
+KIRC,tan,1,0,0,0,0,0,0
+KIRC,turquoise ,0,0,0,0,0,0,0
+KIRP,bisque4,0,0,0,0,0,0,0
+KIRP,black,0,0,1,1,1,0,1
+KIRP,blue,0,0,0,0,0,0,0
+KIRP,brown,0,0,0,0,0,0,0
+KIRP,brown4 ,0,0,0,0,1,0,0
+KIRP,darkgrey ,0,0,0,0,0,0,0
+KIRP,darkmagenta ,0,0,0,0,0,0,0
+KIRP,darkolivegreen ,0,0,0,0,0,0,0
+KIRP,darkorange,0,1,0,0,0,0,0
+KIRP,darkorange2,0,0,0,0,0,0,0
+KIRP,darkred ,0,0,0,0,0,0,0
+KIRP,darkturquoise,0,0,0,0,0,0,0
+KIRP,floralwhite,0,0,0,0,0,0,0
+KIRP,green ,0,0,0,0,0,0,0
+KIRP,greenyellow,1,0,0,0,0,0,0
+KIRP,grey,0,0,0,0,0,0,0
+KIRP,grey60,0,0,0,0,0,0,0
+KIRP,ivory ,0,0,0,0,0,0,0
+KIRP,lightcyan,0,0,0,0,0,0,0
+KIRP,lightcyan1,0,1,1,0,0,0,0
+KIRP,lightgreen ,0,0,0,0,0,0,0
+KIRP,lightsteelblue1 ,0,1,0,0,0,0,0
+KIRP,lightyellow,1,0,0,0,0,0,1
+KIRP,orangered4,0,0,0,0,1,0,0
+KIRP,paleturquoise,0,0,0,0,0,0,0
+KIRP,red,0,0,1,1,1,0,1
+KIRP,royablue,0,0,0,0,1,0,0
+KIRP,saddlebrown,0,0,0,0,0,1,0
+KIRP,salmon,0,1,0,0,0,0,0
+KIRP,sienna3,0,0,0,0,0,0,0
+KIRP,steelblue ,0,0,0,0,0,0,0
+KIRP,tan ,0,0,0,0,0,0,0
+KIRP,turquoise ,0,0,0,0,0,0,0
+KIRP,white ,0,0,0,0,0,0,0
+KIRP,yellow,0,0,0,0,0,0,0
+KIRP,yellowgreen ,0,0,0,0,0,0,0
+LGG,blue,0,0,0,0,0,0,0
+LGG,brown,0,0,0,0,0,0,0
+LGG,cyan ,0,0,0,0,0,0,0
+LGG,darkorange,0,0,0,0,0,0,0
+LGG,green ,0,0,0,0,0,0,0
+LGG,grey,0,0,0,0,0,0,0
+LGG,lightcyan ,0,0,0,0,0,0,0
+LGG,lightgreen,0,0,0,0,0,0,0
+LGG,lightsteelblue1,0,0,0,0,0,0,0
+LGG,lightyellow ,0,0,0,0,0,0,0
+LGG,orangered4 ,0,0,0,0,0,0,0
+LGG,paleturquoise,1,1,0,0,0,0,0
+LGG,palevioletred3,0,1,0,0,0,0,0
+LGG,pink,0,1,0,0,0,0,0
+LGG,plum1,1,0,0,0,0,0,0
+LGG,plum2,0,0,0,0,0,0,0
+LGG,purple ,0,0,0,0,0,0,0
+LGG,royalblue,0,0,0,0,0,0,0
+LGG,saddlebrown,0,0,0,0,0,0,0
+LGG,sienna3,0,0,0,0,0,0,0
+LGG,skyblue ,0,0,0,0,0,0,0
+LGG,skyblue3 ,0,0,0,0,0,0,0
+LGG,steelblue,0,0,1,0,1,0,0
+LGG,tan,0,0,0,0,0,0,0
+LGG,thistle1,1,0,1,1,1,0,1
+LGG,thistle2,0,0,0,0,1,0,0
+LGG,turquoise ,1,0,1,0,1,0,1
+LGG,violet ,0,0,0,0,0,0,0
+LGG,yellow,0,0,0,0,0,0,0
+LGG,yellowgreen ,0,0,0,0,0,0,0
+LIHC,bisque4,0,0,1,0,1,0,0
+LIHC,black,0,1,0,0,0,0,0
+LIHC,blue,0,0,0,0,0,0,0
+LIHC,brown,0,0,1,1,1,0,1
+LIHC,brown4,0,0,0,0,0,0,0
+LIHC,cyan,1,0,0,0,0,0,0
+LIHC,darkgreen ,0,0,0,0,0,0,0
+LIHC,darkmagenta ,0,0,0,0,1,0,0
+LIHC,darkolivegreen ,0,0,0,0,0,0,0
+LIHC,darkorange ,0,0,0,0,0,0,0
+LIHC,darkturquoise,0,0,0,0,0,0,0
+LIHC,green,1,0,0,0,0,0,1
+LIHC,grey60,0,0,0,0,0,0,0
+LIHC,ivory ,0,0,0,0,0,0,0
+LIHC,lightcyan ,0,0,0,0,0,0,0
+LIHC,lightcyan1,0,0,0,0,0,0,0
+LIHC,lightyellow,0,0,0,0,0,0,0
+LIHC,magenta ,0,1,0,0,0,0,0
+LIHC,mediumpurple3,1,0,0,0,0,0,0
+LIHC,midnightblue ,0,0,0,0,0,0,0
+LIHC,orange ,0,0,0,0,0,0,0
+LIHC,orangered4 ,0,0,0,0,0,0,0
+LIHC,pink,0,0,0,0,0,0,0
+LIHC,plum1,0,0,0,0,0,0,0
+LIHC,purple ,0,0,0,0,0,0,0
+LIHC,red,0,0,0,0,0,0,0
+LIHC,royalblue ,0,0,0,0,0,0,0
+LIHC,salmon,1,0,0,0,0,0,1
+LIHC,sienna3 ,0,0,0,0,0,0,0
+LIHC,skyblue3,0,0,0,0,1,0,0
+LIHC,turquoise ,0,0,0,0,0,0,0
+LUAD,black ,0,0,0,0,0,0,0
+LUAD,blue ,0,0,0,0,0,0,0
+LUAD,darkgreen ,0,0,0,0,0,0,0
+LUAD,darkred,1,0,0,0,0,0,0
+LUAD,darkslateblue,1,0,0,0,0,0,0
+LUAD,floralwhite,0,0,1,0,1,0,0
+LUAD,green,0,0,0,0,1,0,0
+LUAD,ivory,0,0,0,0,0,0,0
+LUAD,lightcyan ,0,0,0,0,0,0,0
+LUAD,magenta ,1,0,0,0,0,0,1
+LUAD,midnightblue,1,1,0,0,0,0,1
+LUAD,orangered4,0,1,0,0,0,0,0
+LUAD,pink,0,0,1,1,1,0,0
+LUAD,plum1,0,0,0,0,0,0,1
+LUAD,plum2 ,0,0,0,0,0,0,0
+LUAD,salmon,0,0,0,0,1,0,0
+LUAD,skyblue ,0,0,0,0,0,0,0
+LUAD,steelblue,0,0,0,0,1,0,1
+LUAD,tan ,0,0,0,0,0,0,0
+LUAD,yellow,0,0,1,1,1,0,1
+LUSC,antiquewhite4,0,0,0,0,0,0,0
+LUSC,bisque4,0,0,0,0,0,0,0
+LUSC,blue,0,0,1,1,1,0,1
+LUSC,brown,1,1,0,0,0,0,1
+LUSC,brown4 ,0,0,0,0,0,0,0
+LUSC,coral2 ,0,0,0,0,0,0,0
+LUSC,cyan,0,0,0,0,0,0,0
+LUSC,darkgreen,0,0,0,0,1,0,0
+LUSC,darkgrey ,0,0,0,0,0,0,0
+LUSC,green,1,0,0,0,0,0,0
+LUSC,greenyellow,1,0,0,0,0,0,1
+LUSC,grey,0,0,0,0,0,0,0
+LUSC,grey60,0,0,0,0,1,0,0
+LUSC,lightcyan ,0,0,0,0,0,0,0
+LUSC,lightpink4 ,0,0,0,0,0,0,0
+LUSC,magenta ,0,0,0,0,1,0,0
+LUSC,mediumorchid ,0,0,0,0,0,0,0
+LUSC,palevioletred3,0,0,0,0,0,0,0
+LUSC,pink,0,0,0,0,0,0,0
+LUSC,red,0,0,0,0,0,0,0
+LUSC,royalblue ,0,0,0,0,0,0,0
+LUSC,salmon,0,0,0,0,0,0,0
+LUSC,sienna3,0,0,1,0,0,0,0
+LUSC,skyblue ,0,0,0,0,0,0,0
+LUSC,steelblue ,0,0,0,0,0,0,0
+LUSC,turquoise ,0,0,0,0,0,0,0
+LUSC,white ,0,0,0,0,0,0,0
+LUSC,yellowgreen ,0,0,0,0,0,0,0
+MESO,black ,1,0,0,0,0,0,0
+MESO,darkorange,1,0,1,0,0,0,0
+MESO,darkred,0,0,0,0,0,0,0
+MESO,green,1,0,0,0,0,1,1
+MESO,greenyellow,0,0,0,0,0,0,0
+MESO,grey,0,1,0,0,0,0,0
+MESO,midnightblue ,0,0,0,0,0,0,0
+MESO,orange ,0,0,0,0,0,0,0
+MESO,paleturquoise,0,0,0,0,0,0,0
+MESO,purple,0,0,0,0,0,0,0
+MESO,red,0,0,1,0,1,0,1
+MESO,royalblue,0,0,0,1,0,0,0
+MESO,saddlebrown ,0,0,0,0,0,0,0
+MESO,salmon,0,0,0,0,0,0,0
+MESO,skyblue3,0,0,0,0,0,0,0
+MESO,yellow ,0,0,1,1,1,0,1
+OV,bisque4,0,0,0,0,0,0,0
+OV,blue,0,0,0,0,0,0,0
+OV,brown,1,1,1,0,0,0,1
+OV,brown4 ,0,0,0,0,0,0,0
+OV,coral ,0,0,0,0,0,0,0
+OV,darkseagreen4 ,0,0,0,0,0,0,0
+OV,darkslateblue ,0,0,0,0,0,0,0
+OV,darkviolet ,0,0,0,0,0,0,0
+OV,green,0,0,0,0,0,0,0
+OV,greenyellow,0,0,0,0,1,0,0
+OV,grey,0,0,0,0,0,0,0
+OV,lightcoral ,0,0,0,0,0,0,0
+OV,orange,0,0,0,0,0,0,0
+OV,orangered3 ,0,0,0,0,0,0,0
+OV,pink,0,0,0,0,0,0,1
+OV,plum3 ,0,0,0,0,0,0,0
+OV,purple ,0,0,0,0,0,0,0
+OV,royalblue,0,0,1,0,1,0,0
+OV,saddlebrown,0,0,0,0,1,0,0
+OV,salmon ,0,0,0,0,0,0,0
+OV,skyblue1,0,0,0,0,0,0,0
+OV,steelblue ,0,0,0,0,0,0,0
+OV,tan ,0,0,0,0,0,0,0
+OV,thistle ,0,0,1,0,0,0,0
+OV,turquoise ,0,0,0,0,0,0,0
+OV,yellow ,0,1,1,0,1,0,0
+PAAD,black,0,0,1,1,1,0,1
+PAAD,blue ,0,0,0,0,0,0,0
+PAAD,brown,0,0,0,0,0,0,0
+PAAD,cyan,0,0,1,0,1,0,1
+PAAD,darkgreen ,1,1,0,1,0,0,1
+PAAD,darkgrey ,0,0,0,0,0,0,0
+PAAD,darkmagenta ,0,0,0,0,0,0,0
+PAAD,darkorange ,0,0,0,0,0,0,0
+PAAD,darkred,0,0,0,0,0,0,0
+PAAD,darkturquoise,0,0,0,0,0,0,0
+PAAD,floralwhite,0,0,1,1,0,0,0
+PAAD,green,0,0,0,0,0,0,0
+PAAD,grey,0,1,1,0,0,0,0
+PAAD,ivory ,0,0,0,0,0,0,0
+PAAD,lightcyan ,0,1,0,0,0,0,0
+PAAD,lightgreen,1,0,0,0,0,0,0
+PAAD,lightsteelblue1,0,0,0,0,0,0,0
+PAAD,lightyellow ,0,0,0,0,0,0,0
+PAAD,mediumpurple3,0,0,0,0,1,0,0
+PAAD,orange,0,0,0,0,0,0,0
+PAAD,orangered4 ,0,0,0,0,0,0,0
+PAAD,pink,0,0,0,0,0,0,0
+PAAD,plum1,0,0,0,0,0,0,0
+PAAD,purple,0,0,0,0,0,0,0
+PAAD,royalblue,0,0,0,0,0,0,0
+PAAD,saddlebrown,0,0,0,1,0,0,0
+PAAD,sienna3,0,0,0,0,0,0,0
+PAAD,skyblue ,0,0,0,0,0,0,0
+PAAD,skyblue3 ,0,0,0,0,0,0,0
+PAAD,steelblue ,0,?,0,0,0,0,0
+PAAD,violet,0,0,0,0,1,0,0
+PAAD,yellow,1,0,0,0,0,0,1
+PAAD,yellowgreen,0,0,0,0,0,0,0
+PCPG,cyan ,1,0,1,0,1,0,1
+PCPG,darkturquoise,0,0,0,0,0,0,0
+PCPG,greenyellow ,0,0,0,0,0,0,0
+PCPG,grey60 ,0,0,0,0,0,0,0
+PCPG,lightcyan,1,0,0,0,0,0,1
+PCPG,paleturquoise,0,0,1,0,0,0,0
+PCPG,steelblue,0,1,0,0,0,0,0
+PCPG,tan,0,0,1,1,1,0,1
+PCPG,turquoise ,1,1,0,0,0,0,1
+PCPG,violet,0,0,0,0,1,0,0
+PCPG,white ,0,0,0,0,0,0,0
+PCPG,yellow ,0,0,1,1,1,0,0
+PRAD,blue,0,1,0,0,0,0,0
+PRAD,brown ,0,0,0,0,0,0,0
+PRAD,cyan ,0,0,0,0,0,0,0
+PRAD,darkgreen ,1,0,0,0,0,0,0
+PRAD,darkgrey,0,0,0,0,1,0,0
+PRAD,darkorange ,0,0,0,0,1,0,0
+PRAD,darkred,0,0,0,0,1,0,0
+PRAD,darkturquoise,0,0,0,0,0,0,0
+PRAD,green ,0,0,0,0,0,0,0
+PRAD,greenyellow,0,0,0,0,0,0,0
+PRAD,grey,0,1,0,0,0,0,0
+PRAD,grey60,1,0,0,0,0,0,1
+PRAD,lightcyan,1,1,0,0,0,0,0
+PRAD,lightgreen ,0,0,0,0,0,0,0
+PRAD,lightyellow,1,0,1,0,1,0,1
+PRAD,midnightblue ,0,0,0,0,0,0,0
+PRAD,orange ,0,0,0,0,0,0,0
+PRAD,pink,0,0,0,0,0,0,0
+PRAD,pruple ,0,0,0,0,0,0,0
+PRAD,red,0,0,1,1,1,0,1
+PRAD,royalblue ,0,?,0,0,0,0,0
+PRAD,tan ,0,0,0,0,0,0,0
+PRAD,saddlebrown,0,0,0,0,0,0,0
+PRAD,salmon ,0,0,0,1,1,0,0
+PRAD,turquoise ,0,0,0,0,0,0,0
+PRAD,white,0,0,1,0,1,0,0
+PRAD,yellow ,1,0,0,0,0,0,1
+READ,bisque4 ,0,0,0,0,0,0,0
+READ,blue,1,1,1,0,0,0,1
+READ,brown,0,0,1,1,1,0,1
+READ,brown4,0,0,0,0,0,0,0
+READ,coral1,0,0,0,0,0,0,0
+READ,darkmagenta ,0,0,0,0,0,0,0
+READ,darkroange ,0,0,0,0,0,0,0
+READ,greenyellow ,0,0,0,0,0,0,0
+READ,grey60,0,0,0,0,1,0,0
+READ,lightcyan1,0,0,0,0,0,0,0
+READ,lightgreen,1,0,0,0,0,0,0
+READ,lightpink4,0,0,1,0,1,0,0
+READ,magenta ,0,0,0,0,0,0,0
+READ,maroon ,0,0,0,0,0,0,0
+READ,navajowhite2 ,0,0,0,0,0,0,0
+READ,orangered4 ,0,0,0,0,0,0,0
+READ,paleturquoise,0,0,0,0,0,0,0
+READ,palevioletred3,0,0,0,0,0,0,0
+READ,plum2,0,0,0,0,0,0,0
+READ,red,0,0,0,0,0,0,0
+READ,royalblue ,0,0,0,0,0,0,0
+READ,saddlebrown ,0,0,0,0,0,0,0
+READ,salmon ,0,0,0,0,0,0,0
+READ,steelblue ,0,0,0,0,0,0,0
+READ,thistle1,0,0,0,0,0,0,0
+READ,turquoise ,0,0,0,0,0,0,0
+READ,white ,0,0,0,0,0,0,0
+READ,yellow,0,0,0,0,0,0,0
+SARC,brown,0,0,0,0,0,0,0
+SARC,cyan,1,0,0,0,0,0,1
+SARC,darkgreen ,0,0,0,0,0,0,0
+SARC,darkgrey ,0,0,0,0,0,0,0
+SARC,darkmagenta ,0,0,1,0,1,0,0
+SARC,darkorange ,0,0,0,0,0,0,0
+SARC,green,0,0,0,0,0,0,0
+SARC,greenyellow ,0,0,0,0,0,0,0
+SARC,grey,0,0,0,0,0,0,0
+SARC,lightcyan,0,0,0,0,1,0,0
+SARC,lightgreen ,0,?,0,0,0,0,0
+SARC,lightyellow,0,0,0,0,0,0,0
+SARC,magenta ,0,0,0,0,0,0,0
+SARC,midnightblue,0,0,0,0,0,0,0
+SARC,orange ,0,0,0,0,0,0,0
+SARC,orangered4 ,0,0,0,0,0,0,0
+SARC,pink,0,0,0,0,0,0,0
+SARC,plum1 ,0,0,0,0,0,0,0
+SARC,red,0,0,0,0,0,0,0
+SARC,royalblue ,0,0,0,0,0,0,0
+SARC,tan ,0,0,0,0,0,0,0
+SARC,turquoise ,0,1,1,1,1,0,1
+SARC,white ,0,0,0,0,0,0,0
+SARC,yellowgreen ,0,0,0,0,0,0,0
+SKCM,brown ,0,0,0,0,0,0,0
+SKCM,darkgreen ,1,1,0,0,0,0,0
+SKCM,green ,0,0,0,0,0,0,0
+SKCM,grey60,1,0,0,0,0,0,0
+SKCM,lightcyan,0,0,1,0,1,0,0
+SKCM,red,0,0,1,0,0,0,0
+SKCM,salmon,1,1,0,0,0,0,0
+SKCM,yellow,0,0,1,1,1,0,1
+STAD,blue ,0,0,0,0,0,0,0
+STAD,black,0,0,0,0,0,0,0
+STAD,brown4,0,0,0,0,0,0,0
+STAD,cyan ,0,0,0,0,0,0,0
+STAD,darkgrey ,0,0,0,0,0,0,0
+STAD,darkolivegreen ,0,0,0,0,0,0,0
+STAD,darkorange ,0,0,0,0,0,0,0
+STAD,darkorange2,0,0,0,0,0,0,0
+STAD,darkred ,0,0,0,0,0,0,0
+STAD,green,0,0,1,0,1,0,1
+STAD,grey,0,0,0,0,0,0,0
+STAD,grey60,0,0,0,0,0,0,0
+STAD,ivory ,0,0,0,0,0,0,0
+STAD,lightcyan,0,0,0,0,0,0,0
+STAD,lightcyan1,0,0,1,0,1,0,1
+STAD,lightgreen,0,0,0,0,0,0,0
+STAD,lightyellow,1,0,0,0,0,0,1
+STAD,magenta ,0,0,0,0,0,0,0
+STAD,mediumpurple3,0,0,0,0,0,0,1
+STAD,midnightblue,1,1,0,0,0,0,1
+STAD,orange,0,0,1,0,1,1,1
+STAD,orangered4,0,0,1,0,1,0,0
+STAD,paleturquoise,0,0,0,0,0,0,0
+STAD,purple,0,0,0,0,0,0,0
+STAD,royalblue,0,1,1,0,0,0,0
+STAD,sienna3,0,0,0,0,0,0,0
+STAD,tan ,0,0,0,0,0,0,0
+STAD,turquoise ,0,0,0,0,0,0,0
+STAD,yellowgreen ,0,0,0,0,1,0,0
+TGCT,black,0,0,0,0,0,0,0
+TGCT,blue ,0,0,0,0,0,0,0
+TGCT,brown ,0,0,0,0,0,0,0
+TGCT,darkgreen ,0,0,0,0,0,0,0
+TGCT,darkmagenta ,0,0,0,0,0,0,0
+TGCT,darkturquoise,0,0,0,0,0,0,0
+TGCT,darorange,0,0,1,0,1,0,0
+TGCT,grey,0,0,0,0,0,0,0
+TGCT,grey60,0,0,1,0,1,0,0
+TGCT,lightcyan ,0,0,0,0,0,0,0
+TGCT,lightsteelblue1,0,0,0,0,0,0,0
+TGCT,lightyellow,0,0,0,0,0,0,0
+TGCT,mediumpurple3 ,0,0,0,0,0,0,0
+TGCT,midnightblue,0,0,0,0,0,0,0
+TGCT,orange ,0,0,0,0,0,0,0
+TGCT,pink,0,0,0,0,0,0,0
+TGCT,plum1,0,0,0,0,0,0,0
+TGCT,purple ,0,0,0,0,0,0,0
+TGCT,red ,0,1,0,0,0,0,0
+TGCT,royalblue ,0,0,0,0,0,0,0
+TGCT,sienna3 ,0,0,0,0,0,0,0
+TGCT,skyblue ,0,0,0,0,0,0,0
+TGCT,skyblue3,0,0,0,0,0,0,0
+TGCT,steelblue ,0,0,0,0,0,0,0
+TGCT,turquoise ,1,1,1,0,0,0,1
+TGCT,white ,0,0,0,0,0,0,0
+TGCT,yellow,0,0,0,0,0,0,0
+TGCT,yellogreen ,0,0,0,0,0,0,0
+THCA,black,0,0,0,0,0,0,0
+THCA,blue,0,0,1,1,1,0,1
+THCA,brown,0,0,0,0,0,0,0
+THCA,darkgreen,0,0,1,0,0,0,0
+THCA,darkgrey ,0,0,0,0,0,0,0
+THCA,darkorange ,0,0,0,0,0,0,0
+THCA,darkred,0,0,0,0,0,0,0
+THCA,green,0,0,0,0,1,0,1
+THCA,grey,0,1,0,0,0,0,0
+THCA,grey60,0,0,0,0,0,0,0
+THCA,lightgreen ,0,0,1,0,0,0,0
+THCA,lightyellow,0,0,0,0,0,0,0
+THCA,magenta ,0,0,0,0,0,0,0
+THCA,midnightblue ,0,0,0,0,0,0,0
+THCA,orange,0,0,0,0,0,0,0
+THCA,paleturquoise,0,0,0,0,0,0,0
+THCA,purple ,0,0,0,0,1,0,0
+THCA,red,0,0,0,0,0,0,0
+THCA,royalblue ,0,0,0,0,0,0,0
+THCA,saddlebrown ,0,0,0,0,0,0,0
+THCA,salmon ,1,1,0,0,0,0,0
+THCA,tan ,0,0,0,0,0,0,0
+THCA,turquoise ,0,0,0,0,0,0,0
+THCA,yellow,0,0,0,0,0,0,0
+THYM,blue,0,0,0,1,0,0,0
+THYM,brown,0,0,0,0,0,0,0
+THYM,green,0,?,0,0,0,0,0
+THYM,grey,0,1,1,0,0,0,0
+THYM,purple ,0,0,0,0,0,0,0
+THYM,red,0,0,0,0,0,0,0
+THYM,turquoise ,0,0,1,0,0,0,0
+THYM,yellow ,0,0,0,0,0,0,0
+UCEC,blue,0,0,1,1,1,0,1
+UCEC,cyan ,0,0,0,0,0,0,0
+UCEC,darkgreen ,0,0,0,0,0,0,0
+UCEC,darkmagenta ,0,0,0,0,0,0,0
+UCEC,darkolivegreen,1,0,0,0,0,0,0
+UCEC,darkred ,0,0,0,0,0,0,0
+UCEC,green,0,0,0,0,0,0,0
+UCEC,greenyellow ,0,0,0,0,0,0,0
+UCEC,grey,0,1,1,0,0,0,0
+UCEC,grey60,0,0,0,0,0,0,0
+UCEC,magenta ,0,0,0,0,0,0,0
+UCEC,midnightblue,1,1,1,0,0,0,1
+UCEC,orange,1,0,0,0,0,0,0
+UCEC,paleturquoise,0,0,0,0,0,0,0
+UCEC,pink,0,0,0,0,0,0,0
+UCEC,plum1,0,0,0,0,0,0,0
+UCEC,purple,0,0,0,0,0,0,0
+UCEC,red,0,0,0,0,0,0,0
+UCEC,saddlebrown ,0,0,0,0,0,0,0
+UCEC,skyblue ,0,0,0,0,0,0,0
+UCEC,steelblue ,0,0,0,0,0,0,0
+UCEC,violet,0,0,0,0,1,0,0
+UCEC,yellow ,0,0,0,0,0,0,0
+UCEC,yellowgreen ,0,0,0,0,0,0,0
+UCS,grey60,0,1,0,0,0,0,1
+UCS,lightcyan ,0,0,0,0,0,0,0
+UCS,lightyellow ,0,0,0,0,0,0,0
+UCS,steelblue,0,0,1,0,1,0,1
+UCS,thistle ,0,0,0,0,0,0,0
+UCS,turquoise ,0,0,0,0,0,0,0
+UCS,yellow,0,1,1,0,1,0,1
+UVM,black ,0,0,0,0,0,0,0
+UVM,darkgrey ,0,0,0,0,0,0,0
+UVM,green,0,0,0,0,0,0,0
+UVM,grey,0,1,0,0,0,0,0
+UVM,lightcyan ,0,0,0,0,0,0,0
+UVM,magenta ,0,0,0,0,0,0,0
+UVM,midnightblue,1,0,0,0,0,0,0
+UVM,paleturquoise,0,0,0,0,1,0,0
+UVM,red,0,0,1,0,1,0,1
+UVM,royalblue ,0,0,0,0,1,0,0
+UVM,saddlebrown ,0,0,1,0,1,0,0
+UVM,steelblue,0,0,0,0,0,0,0

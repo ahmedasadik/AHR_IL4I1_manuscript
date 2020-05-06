@@ -139,7 +139,7 @@ WGCNA_Circ_plot_FUN <- function(i, g_mats,  mod_w_enz, ttl, save_path, enz_vec){
   mat_list2.0 <- map(to_subset, function(x){mat3[,factors2==x]})
   names(mat_list2.0) <- to_subset
   mod_enz_pr <- mod_w_enz[[i]] %>% .[!is.na(.$aaa_enzymes),]
-  tiff(save_path[i], width = 4, height = 4, units = "in", res = 300)
+  pdf(save_path[i], width = 4, height = 4, pointsize = 16)
   ## plot outline
   circos.par(cell.padding = c(0, 0, 0, 0), gap.degree = 4)
   x_limits <- cbind(rep(0,length(to_subset)), table(factors2))
@@ -150,11 +150,11 @@ WGCNA_Circ_plot_FUN <- function(i, g_mats,  mod_w_enz, ttl, save_path, enz_vec){
                  y_p <- get.cell.meta.data("ylim")
                  circos.rect(x_p[1], y_p[1],x_p[2], y_p[2],
                              col = ifelse(CELL_META$sector.index %in% colors(),CELL_META$sector.index, "white"),
-                             border = NA)
+                             border = ifelse(CELL_META$sector.index %in% colors(),"black", "white"))
                })
   ## add enzyme names
   map(enz_vec, function(z){
-    circos.text(25, 0.2, labels=z, sector.index = z, cex=0.8,
+    circos.text(25, 0.35, labels=z, sector.index = z, cex=0.9,
                 facing = "clockwise", niceFacing = TRUE, col = "black")
   })
   ## plot links
@@ -162,8 +162,8 @@ WGCNA_Circ_plot_FUN <- function(i, g_mats,  mod_w_enz, ttl, save_path, enz_vec){
   if(dim(mod_enz_pr)[1]!=0){
     map2(mod_enz_pr$genes,mod_enz_pr$module, function(x,y){
       l_inv <- x_limits[rownames(x_limits)==y,2]/2
-      circos.link(x, c(0,50), y, c(l_inv-10, l_inv+10), col = y)
-    })
+      circos.link(x, c(0,50), y, c(l_inv-10, l_inv+10), col = y, border = "black") 
+    }) 
   }
   
   ## add title
@@ -172,6 +172,51 @@ WGCNA_Circ_plot_FUN <- function(i, g_mats,  mod_w_enz, ttl, save_path, enz_vec){
   dev.off()
 }
 
+# Divide into groups based on median absolute deviation increments
+group_no_z_FUN <- function(x,y){
+  x_med <- median(x)
+  x_mad <- mad(x)
+  group <- vector("character", length = length(x))
+  group[which(x >= (x_med + (y*x_mad)))] <- "high"
+  group[which(x < (x_med - (y*x_mad)))] <- "low"
+  group
+}
+
+# Perform gene set testing using roast (developed by Gordon Smyth)
+GSA_roast_hi_lo_grps_FUN <- function(cnts,dge,goi,glist,sd_val){
+  OV_TDO2_idx <- which(rownames(cnts)==goi)
+  OV_TDO2_vals <- cnts[OV_TDO2_idx,]
+  OV_med_0_group <- group_no_z_FUN(OV_TDO2_vals,sd_val)
+  names(OV_med_0_group) <- colnames(cnts)
+  if(sd_val==0){
+    ct <- factor(OV_med_0_group, levels = c("low","high"))
+    des_mat <- model.matrix(~ct) 
+    index.vector <- colnames(dge$E) %in% glist
+    AHR_roast <- roast(t(dge$E), index = index.vector, design = des_mat,
+                       contrast = 2, set.statistic = "floormean")
+  } else if(sd_val>0){
+    OV_grps <- OV_med_0_group[-which(OV_med_0_group=="")]
+    ct <- factor(OV_grps, levels = c("low","high"))
+    des_mat <- model.matrix(~ct)
+    index.vector <- colnames(dge$E) %in% glist
+    AHR_roast <- roast(t(dge$E), index = index.vector, design = des_mat,
+                       contrast = 2, set.statistic = "floormean")
+  }
+  roast_cols <- c("NGenes",	"PropDown",	"PropUp",	"Direction",	"PValue",	"FDR",	"PValue.Mixed",	"FDR.Mixed")
+  AHR_roast_df <- as.matrix(rep(0,length(roast_cols)),nrow=1) %>% t() %>% as.data.frame()
+  colnames(AHR_roast_df) <- roast_cols
+  AHR_roast_df$NGenes <- AHR_roast$ngenes.in.set
+  AHR_roast_df$PropDown <- AHR_roast$p.value$Active.Prop[1] %>% round(.,4)
+  AHR_roast_df$PropUp <- AHR_roast$p.value$Active.Prop[2] %>% round(.,4)
+  AHR_roast_df$Direction <- ifelse(AHR_roast_df$PropDown > AHR_roast_df$PropUp, "Down", "Up")
+  AHR_roast_df$PValue <- AHR_roast_df$FDR <- ifelse(AHR_roast_df$Direction=="Down",
+                                                    round(AHR_roast$p.value$P.Value[3], 4),
+                                                    round(AHR_roast$p.value$P.Value[3],4))
+  AHR_roast_df$PValue.Mixed <- AHR_roast_df$FDR.Mixed <- round(AHR_roast$p.value$P.Value[4],4)
+  AHR_roast_df 
+}
+
+# Plotting functions
 # plot annotation function
 annt_fun <- function(sig_diff_s, l){
   lbl <- vector("character", length = l)
@@ -191,8 +236,6 @@ annt_fun <- function(sig_diff_s, l){
   lbl
 }
 
-# boxplot function
-# imported from functions_and_parameters.R
 dfs_to_plot_FUN <- function(df,ttl){
   df_melt <- reshape::melt(df)
   comp_means_res <- compare_means(formula = value~cluster, data=df_melt) %>%  as.data.frame()
@@ -241,21 +284,9 @@ HM_plot_FUN <- function(i,a1,a2,a3,a4){
               sep_vec =sep_vec)
 }
 
-# Divide into groups based on median absolute deviation increments
-group_no_z_FUN <- function(x,y){
-  x_med <- median(x)
-  x_mad <- mad(x)
-  group <- vector("character", length = length(x))
-  group[which(x >= (x_med + (y*x_mad)))] <- "high"
-  group[which(x < (x_med - (y*x_mad)))] <- "low"
-  group
-}
-
 avoid_overlap <- function(x){
   ind <- seq_along(x) %% 2==0
   x[ind] <- gsub("\\s", " ", format(x[ind], width=max(nchar(x[ind]))+8))
   x[ind] <- paste0(x[ind], "         ")
   x
 }
-
-
