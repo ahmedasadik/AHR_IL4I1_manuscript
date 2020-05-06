@@ -26,7 +26,7 @@ TCGA_counts <- readRDS("./Zenodo_download/TCGA_counts.rds")
 TCGA_voom <- readRDS("./Zenodo_download/TCGA_DGE_voom_annot.rds")
 
 # Read the AHR signature file
-overlapping_genes <- read.delim("./Resources/overlapping_AHR_signature.txt", sep = "\t", stringsAsFactors = F)
+overlapping_genes <- read.delim("./Resources/overlapping_AHR_signature_genes.txt", sep = "\t", stringsAsFactors = F)
 
 ####################################################################################
 ## AHR activation is associated with TDO2 and IDO1 expression in different tumors ##
