@@ -19,10 +19,10 @@ library(ggpubr)
 library(ggplot2)
 
 ## Load data
-load("./Resources/TCGA-SKCMTranscriptome_ProfilingWed_Oct__4_161844_2017.RData")
+load("../Resources/TCGA-SKCMTranscriptome_ProfilingWed_Oct__4_161844_2017.RData")
 
 ## AHR signature
-AHR_genes <- read.delim("./Resources/overlapping_AHR_signature_genes.txt",stringsAsFactors = F)
+AHR_genes <- read.delim("../Resources/overlapping_AHR_signature_genes.txt",stringsAsFactors = F)
 
 ## AHR activation comparison between the primary and metastatic melanomas
 TCGA_SKCM_colData <- SummarizedExperiment::colData(data)
@@ -46,7 +46,7 @@ skcm_cpm <- cpm(skcm_dge, prior.count = 1, log = T)
 met_pri_df <- data.frame(IL4I1=skcm_cpm[which(skcm_dge$genes$external_gene_name=="IL4I1"),],
                          pt=skcm_dge$samples$shortLetterCode, stringsAsFactors = F)
 met_pri_df$pt <- factor(met_pri_df$pt, levels = c("TP","TM"))
-pdf("./Results/Figures/IL4I1_met_vs_pr_melanoma.pdf", height = 8, width = 12)
+pdf("../Results/Figures/IL4I1_met_vs_pr_melanoma.pdf", height = 8, width = 12)
 ggboxplot(met_pri_df,"pt","IL4I1", xlab = FALSE, ylab = "IL4I1 (log2 CPM)", ylim=c(-3,12))+
   scale_y_continuous(name = "IL4I1 (log2 CPM)",limits = c(-3,12), breaks = c(0,4,8))+
   stat_compare_means(label.y = c(1.5,10))+ggbeeswarm::geom_quasirandom()
@@ -77,7 +77,7 @@ tt <- topTable(efit, number = Inf, adjust.method = "BH", sort.by = "M")
 ## Generate a barcodeplot
 skcm_idx <- tt$external_gene_name %in% AHR_genes$Gene
 
-pdf("./Results/Figures/barcodeplot_skcm_met_vs_pr.pdf", width = 8, height = 6, pointsize = 16)
+pdf("../Results/Figures/barcodeplot_skcm_met_vs_pr.pdf", width = 8, height = 6, pointsize = 16)
 barcodeplot(tt$t,skcm_idx)
 dev.off()
 
@@ -96,4 +96,4 @@ AHR_roast_df$PValue <- AHR_roast_df$FDR <- ifelse(AHR_roast_df$Direction=="Down"
                                                   round(skcm_comp_roast$p.value$P.Value[3], 4),
                                                   round(skcm_comp_roast$p.value$P.Value[3],4))
 AHR_roast_df$PValue.Mixed <- AHR_roast_df$FDR.Mixed <- round(skcm_comp_roast$p.value$P.Value[4],4)
-write.table(AHR_roast_df,"./Results/Tables/SKCM_met_vs_pr_roast.txt",sep = "\t")
+write.table(AHR_roast_df,"../Results/Tables/SKCM_met_vs_pr_roast.txt",sep = "\t")

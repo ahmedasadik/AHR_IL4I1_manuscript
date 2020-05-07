@@ -19,7 +19,7 @@ library(RColorBrewer)
 library(dplyr)
 
 ## Read the AHR signature file (this file is already supplied for faster runs with no need for regenration)
-overlapping_genes <- read.delim("./Resources/overlapping_AHR_signature_genes.txt", sep = "\t", stringsAsFactors = F)
+overlapping_genes <- read.delim("../Resources/overlapping_AHR_signature_genes.txt", sep = "\t", stringsAsFactors = F)
 
 ##################################################
 # Gene ontologies enriched in the AHR signature ##
@@ -35,13 +35,13 @@ GO_ALL_simple <- map(GO_ALL,simplify)
 # Filter the higher levels
 GO_ALL_filtered <- map(GO_ALL_simple,gofilter)
 
-saveRDS(GO_ALL, "./Results/RDS/GO_all.rds")
-saveRDS(GO_ALL_simple, "./Results/RDS/GO_all_simple.rds")
-saveRDS(GO_ALL_filtered, "./Results/RDS/GO_all_filtered.rds")
+saveRDS(GO_ALL, "../Results/RDS/GO_all.rds")
+saveRDS(GO_ALL_simple, "../Results/RDS/GO_all_simple.rds")
+saveRDS(GO_ALL_filtered, "../Results/RDS/GO_all_filtered.rds")
 
 ## The result of the filtered ontologies were saved as a data.frame and were grouped manually
 ## Generating a plot of GO of AHR signature genes after the manual grouping of terms
-go_to_plot_BP <- read.delim("./Resources/GO_table_AHR_Signatures.csv", sep = "\t", stringsAsFactors = F)
+go_to_plot_BP <- read.delim("../Resources/GO_table_AHR_Signatures.csv", sep = "\t", stringsAsFactors = F)
 go_to_plot_BP$p.adjust <- gsub(",","\\.",go_to_plot_BP$p.adjust) %>% as.numeric()
 go_to_plot_BP$logpv <- -log10(go_to_plot_BP$p.adjust)
 go_to_plot_BP$GO_groups <- factor(go_to_plot_BP$GO_groups)
@@ -77,6 +77,6 @@ p_GO_counts <- ggplot(go_to_plot_BP2, aes(x=as.factor(pid), y=Count, fill=logpv,
   geom_segment(data=base_data, aes(x = start, y = -5, xend = end, yend = -5, color=GO_groups), alpha=0.8, size=2.6 , inherit.aes = FALSE, show.legend = TRUE) + 
   scale_colour_brewer(palette = "Dark2", guide=guide_legend(title = "Biological processes GOs"))
 
-pdf("./Results/AHR_signature/AHR_GOs_circular_plot.pdf", width = 8, height = 8, family= "Arial", pointsize = 18)
+pdf("../Results/AHR_signature/AHR_GOs_circular_plot.pdf", width = 8, height = 8, pointsize = 18)
 p_GO_counts
 dev.off()

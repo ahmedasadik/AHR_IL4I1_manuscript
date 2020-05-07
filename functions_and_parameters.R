@@ -33,6 +33,11 @@ tcga_names <- c("TCGA_ACC", "TCGA_BLCA", "TCGA_BRCA", "TCGA_CESC", "TCGA_CHOL", 
                 "TCGA_PRAD", "TCGA_READ", "TCGA_SARC", "TCGA_SKCM", "TCGA_STAD", "TCGA_TGCT", "TCGA_THCA",
                 "TCGA_THYM", "TCGA_UCEC", "TCGA_UCS", "TCGA_UVM")
 
+TCGA_names <- c("ACC", "BLCA", "BRCA", "CESC", "CHOL", "COAD", "DLBC",
+                "ESCA", "GBM", "HNSC", "KICH", "KIRC", "KIRP", "LGG", "LIHC",
+                "LUAD", "LUSC", "MESO", "OV", "PAAD", "PCPG", "PRAD", "READ",
+                "SARC", "SKCM", "STAD", "TGCT", "THCA", "THYM", "UCEC", "UCS", "UVM")
+
 #################################################
 ## FUNCTIONS
 #################################################

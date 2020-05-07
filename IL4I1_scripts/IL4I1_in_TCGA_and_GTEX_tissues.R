@@ -1,3 +1,16 @@
+#!/usr/bin/env Rscript
+
+#################################################
+## Project: AHR IL4I1
+## Origin: https://github.com/ahmedasadik/AHR_IL4I1_manuscript/AHR_signature/
+## Date: Oct 2018
+## Author: Ahmed Sadik (a.sadik@dkfz.de)
+##
+## Description
+## This files describes the median expression of IDO1, TDO2, IDO2 and IL4I1 in TCGA and GTEX tissues
+################################################
+
+## Load libraries
 library(purrr)
 library(ggplot2)
 library(corrplot)
@@ -7,7 +20,7 @@ library(ggbeeswarm)
 library(ggpubr)
 
 ## Read TCGA_TPMs
-TCGA_TPMs <- readRDS("/home/data/Processed/TCGA/RNAseqV2/TCGA_TPMs.rds")
+TCGA_TPMs <- readRDS("../Zenodo_download/TCGA_TPMs.rds")
 
 ## estimate the mean or median of IDO1, IDO2, and TDO2 in the tumors and normal tissue
 TCGA_enz_means <- map_df(TCGA_TPMs[-14], function(dge){
@@ -28,22 +41,16 @@ TCGA_enz_means <- as.data.frame(TCGA_enz_means)
 TCGA_enz_means[which(is.infinite(TCGA_enz_means$IDO2)),2] <- 0
 
 rownames(TCGA_enz_means) <- gsub("TCGA_","", rownames(TCGA_enz_means))
-pdf("/home/analyses/Projects_WF/General/BJC_review/corr_plot_Trp_enzymes_w_IL4I1_TCGA.pdf",width = 8, height = 12, pointsize = 24)
+pdf("../Results/Figures/bubbleheatmap_plot_IDO1_TDO2_IDO2_IL4I1_TCGA.pdf",width = 8, height = 12, pointsize = 24)
 corrplot(corr = t(as.matrix(TCGA_enz_means)), insig = "blank",tl.cex = 0.7,
-         tl.col = "black",cl.length = 2, cl.pos = "r",cl.cex = 0.5,
-         is.corr = F, col = colorRampPalette(c("#377EB8", "white", "#E41A1C"))(17), method = "circle")
-dev.off()
-
-pdf("/home/analyses/Projects_WF/General/BJC_review/corr_plot_Trp_enzymes_wout_IL4I1_TCGA.pdf",width = 8, height = 12, pointsize = 24)
-corrplot(corr = t(as.matrix(TCGA_enz_means[,-4])), insig = "blank",tl.cex = 0.7,
          tl.col = "black",cl.length = 2, cl.pos = "r",cl.cex = 0.5,
          is.corr = F, col = colorRampPalette(c("#377EB8", "white", "#E41A1C"))(17), method = "circle")
 dev.off()
 
 #################
 ## GTEX TPMs
-gtex_tpms <- data.table::fread("/home/data/Processed/TCGA/TPMs/GTEX/GTEx_Analysis_2016-01-15_v7_RNASeQCv1.1.8_gene_tpm.gct")
-gtex_annot <- read.delim("/home/data/Raws/GTEX/annot", sep = "\t", stringsAsFactors = F)
+gtex_tpms <- data.table::fread("../Zenodo_download/GTEx_Analysis_2016-01-15_v7_RNASeQCv1.1.8_gene_tpm.gct")
+gtex_annot <- read.delim("../Zenodo_download/GTEX_annot", sep = "\t", stringsAsFactors = F)
 
 GTEX_IDO1_idx <- which(gtex_tpms$Description=="IDO1")
 GTEX_IDO2_idx <- which(gtex_tpms$Description=="IDO2")
@@ -79,26 +86,8 @@ gtex_to_plot <- map(gtex_tissues, function(gts, g_df){
 
 rownames(gtex_to_plot) <- gtex_tissues
 
-pdf("/home/analyses/Projects_WF/General/BJC_review/corr_plot_Trp_enzymes_w_IL4I1_GTEx.pdf",width = 8, height = 12, pointsize = 24)
+pdf("../Results/Figures/bubbleheatmap_IDO1_TDO2_IDO2_IL4I1_GTEx.pdf",width = 8, height = 12, pointsize = 24)
 corrplot(corr = t(as.matrix(gtex_to_plot)), insig = "blank",tl.cex = 0.7,
-         tl.col = "black",cl.length = 2, cl.pos = "r",cl.cex = 0.5,
-         is.corr = F, col = colorRampPalette(c("#377EB8", "white", "#E41A1C"))(17), method = "circle")
-dev.off()
-
-pdf("/home/analyses/Projects_WF/General/BJC_review/corr_plot_Trp_enzymes_wout_IL4I1_GTEx.pdf",width = 8, height = 12, pointsize = 24)
-corrplot(corr = t(as.matrix(gtex_to_plot[,-4])), insig = "blank",tl.cex = 0.7,
-         tl.col = "black",cl.length = 2, cl.pos = "r",cl.cex = 0.5,
-         is.corr = F, col = colorRampPalette(c("#377EB8", "white", "#E41A1C"))(17), method = "circle")
-dev.off()
-
-## combined plot of enzyme expression in all tumors ####
-pdf("/home/analyses/Projects_WF/General/BJC_review/corr_plot_Trp_enzymes_w_IL4I1_TCGA_GTEx_Comparison.pdf",width = 12, height = 6, pointsize = 24)
-layout(c(1,2))
-corrplot(corr = t(as.matrix(gtex_to_plot[,])), insig = "blank",tl.cex = 0.7,
-         tl.col = "black",cl.length = 2, cl.pos = "r",cl.cex = 0.5,
-         is.corr = F, col = colorRampPalette(c("#377EB8", "white", "#E41A1C"))(17), method = "circle")
-
-corrplot(corr = t(as.matrix(TCGA_enz_means[,])), insig = "blank",tl.cex = 0.7,
          tl.col = "black",cl.length = 2, cl.pos = "r",cl.cex = 0.5,
          is.corr = F, col = colorRampPalette(c("#377EB8", "white", "#E41A1C"))(17), method = "circle")
 dev.off()

@@ -17,16 +17,16 @@ library(org.Hs.eg.db)
 library(clusterProfiler)
 
 ## Source the functions and parameters files
-source("./functions_and_parameters.R")
+source("../functions_and_parameters.R")
 
 # Module Eigen genes
-GT_GSVA_overlap_MEs <- readRDS("./Results/RDS/GT_GSVA_overlap_MEs.rds")
+GT_GSVA_overlap_MEs <- readRDS("../Results/RDS/GT_GSVA_overlap_MEs.rds")
 
 # Gene names in the different modules
-TCGA_modules_genes <- readRDS("./Results/RDS/TCGA_modules_genes.rds")
+TCGA_modules_genes <- readRDS("../Results/RDS/TCGA_modules_genes.rds")
 
 # HGNC
-hgnc <- read.delim("./Resources/human_hgnc_annotation_file.txt")
+hgnc <- read.delim("../Resources/human_hgnc_annotation_file.txt")
 
 #########################################################################
 ## Generate the GO ontologies that are over-represented in each module ##
@@ -63,7 +63,7 @@ EID_annot_na <- purrr::map(EID_annot,function(a1){
   colnames(df) <- c("hGene", "EID")
   df
 })
-saveRDS(EID_annot_na, "./Results/RDS/EID_annot_na.rds")
+saveRDS(EID_annot_na, "../Results/RDS/EID_annot_na.rds")
 
 ## Run gene ontology analysis on the EIDs for the different modules
 GO_ALL_tumor_modules <- lapply(EID_annot_na, safely(function(a1){
@@ -73,19 +73,19 @@ GO_ALL_tumor_modules <- lapply(EID_annot_na, safely(function(a1){
   print("Done")
   res <- list(BP=GO_res, BP_simple=GO_res_simple, BP_sim_fil=GO_res_filtered)
 }))
-saveRDS(GO_ALL_tumor_modules, "./Results/RDS/GO_all_tumor_modules.rds")
+saveRDS(GO_ALL_tumor_modules, "../Results/RDS/GO_all_tumor_modules.rds")
 
 # Saving all hits in separate files before any filters are applied
 GO_BP_dfs <- map(GO_ALL_tumor_modules, safely(function(x)x$result$BP@result))
 GO_BP_dfs_idx <- map(GO_BP_dfs, function(x)is.null(x$error))%>% unlist()
 GO_BP_dfs <- GO_BP_dfs[GO_BP_dfs_idx]
 
-walk2(GO_BP_dfs,paste("./Results/GO_AAMs/BP/",names(GO_BP_dfs),".csv",sep = ""), function(a1,a2){
+walk2(GO_BP_dfs,paste("../Results/GO_AAMs/BP/",names(GO_BP_dfs),".csv",sep = ""), function(a1,a2){
   write.csv(as.data.frame(a1$result),a2)})
 
 # Saving all hits in separate files after merging and filtering are applied
 GO_BP_sim_dfs <- map(GO_ALL_tumor_modules, safely(function(x)x$result$BP_sim_fil@result))
 GO_BP_sim_dfs_idx <- map(GO_BP_sim_dfs, function(x)is.null(x$error))%>% unlist()
 GO_BP_sim_dfs <- GO_BP_sim_dfs[GO_BP_sim_dfs_idx]
-walk2(GO_BP_sim_dfs,paste("./Results/GO_AAMs/BP_sim/",names(GO_BP_sim_dfs),".csv",sep = ""), function(a1,a2){
+walk2(GO_BP_sim_dfs,paste("../Results/GO_AAMs/BP_sim/",names(GO_BP_sim_dfs),".csv",sep = ""), function(a1,a2){
   write.csv(as.data.frame(a1$result),a2)})

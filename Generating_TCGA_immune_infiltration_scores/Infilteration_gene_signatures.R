@@ -12,7 +12,7 @@
 ################################################
 
 ## Source the functions and parameters files
-source("./functions_and_parameters.R")
+source("../functions_and_parameters.R")
 
 ## Load libraries
 library(purrr)
@@ -20,10 +20,10 @@ library(parallel)
 library(dplyr)
 
 ## HGNC
-hgnc <- read.delim("./Resources/human_hgnc_annotation_file.txt", stringsAsFactors = F)
+hgnc <- read.delim("../Resources/human_hgnc_annotation_file.txt", stringsAsFactors = F)
 
 ## Read the immune metagenes
-metagenes <- read.csv("./Resources/IPS_cell_metagenes.csv", stringsAsFactors = F)
+metagenes <- read.csv("../Resources/IPS_cell_metagenes.csv", stringsAsFactors = F)
 colnames(metagenes) <- metagenes[2,]
 metagenes <- metagenes[-c(1:2),]
 
@@ -58,4 +58,4 @@ cell_types <- levels(as.factor(metagene_hgnc_annot_na$cell_type))
 cell_types_metagene_lists <- map(cell_types, function(a){metagene_hgnc_annot_na[metagene_hgnc_annot_na$cell_type==a,]})
 names(cell_types_metagene_lists) <- cell_types
 
-saveRDS(cell_types_metagene_lists, "./Results/RDS/IPS_cell_types_gene_lists.rds")
+saveRDS(cell_types_metagene_lists, "../Results/RDS/IPS_cell_types_gene_lists.rds")

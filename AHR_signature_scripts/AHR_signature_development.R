@@ -16,13 +16,13 @@ library(biomaRt)
 library(parallel)
 
 ## Source the functions and parameters files
-source("./functions_and_parameters.R")
+source("../functions_and_parameters.R")
 
 #####################
 ## NLP AHR targets ##
 #####################
 ## These are the targets that were generated as a result of the text mining approach
-nlp_AHR <- read.delim("./Resources/ahr_targets_filtered_abundances.csv")
+nlp_AHR <- read.delim("../Resources/ahr_targets_filtered_abundances.csv")
 colnames(nlp_AHR) <- c("gene", "freq")
 
 ## Extracting unique AHR targets and converting them to upper case
@@ -36,7 +36,7 @@ nlp_AHR_genes[c(51,80,122,207,423,447)] <- c("AR", "TH","F3", "HP","INFA","JUN")
 #######################
 ## These are the lists of differentially regulated genes acquired from curated datasets
 # GEO datasets
-sheet_path <- "./Resources/selected_AHR_studies.xlsx"
+sheet_path <- "../Resources/selected_AHR_studies.xlsx"
 datasheets <- xlsx::loadWorkbook(sheet_path)
 sheets <- xlsx::getSheets(datasheets)
 
@@ -71,7 +71,7 @@ all_signals <- map(genes, function(gene_sym){
 
 signal_df <- do.call("rbind", all_signals)
 
-write.table(signal_df, "./Results/AHR_signature/signal_df.txt", sep = "\t")
+write.table(signal_df, "../Results/AHR_signature/signal_df.txt", sep = "\t")
 
 ## Get the gene symbols of the features annotated with ensemble transcript IDs
 signal_df_genes_enst <- signal_df$gene_sym[grep("^ENST", signal_df$gene_sym)]
@@ -91,7 +91,7 @@ signal_df_genes_all <- signal_df$gene_sym %>% .[-grep("^ENST", .)] %>% c(.,signa
 ############
 ## These are the targets that have AHR binding sites as per the Sygnal database (tfbsdb.systemsbiology.net)
 # retrieve the AHR motif targets
-Sygnal_AHR <- list.files("./Resources/Sygnal/", full.names = T)
+Sygnal_AHR <- list.files("../Resources/Sygnal/", full.names = T)
 Sygnal_AHR_files <- map(Sygnal_AHR, read.delim, sep=",", stringsAsFactors=F)
 Sygnal_AHR_eIDs <- Sygnal_AHR_files %>% map(.,function(x){x[,1]}) %>% unlist() %>% as.character()
 
@@ -102,7 +102,7 @@ Sygnal_AHR_genes <- unlist(mget(unique(Sygnal_AHR_eIDs), org.Hs.egSYMBOL,ifnotfo
 ## Annotation update as per HGNC ##
 ###################################
 # This was downloaded directly from HGNC on 04-12-2017
-hgnc <- read.delim("./Resources/human_hgnc_annotation_file.txt")
+hgnc <- read.delim("../Resources/human_hgnc_annotation_file.txt")
 
 ## This is performed for all three target types
 cl <- makeCluster(no_cores)
@@ -160,7 +160,7 @@ signal_df_genes_all_hgnc_annot_na <- rbind(signal_df_genes_all_hgnc_annot_na, da
 signal_df_genes_all_hgnc_annot_na <- signal_df_genes_all_hgnc_annot_na[!is.na(signal_df_genes_all_hgnc_annot_na$V1),]
 signal_df_genes_all_hgnc_annot_na <- signal_df_genes_all_hgnc_annot_na[!is.na(signal_df_genes_all_hgnc_annot_na$V2),]
 signal_df_genes_all_hgnc_annot_na <- signal_df_genes_all_hgnc_annot_na[which(duplicated(signal_df_genes_all_hgnc_annot_na$V1)==FALSE),]
-write.table(signal_df_genes_all_hgnc_annot_na,"./Results/AHR_signature/AHR_genes_datasets.txt", sep = "\t")
+write.table(signal_df_genes_all_hgnc_annot_na,"../Results/AHR_signature/AHR_genes_datasets.txt", sep = "\t")
 
 ### Sygnal genes proofing after HGNC
 ## Sygnal_AHR_genes_hgnc_annot
@@ -171,7 +171,7 @@ problem_rows_Sygnal <- rownames(Sygnal_AHR_genes_hgnc_annot_na)[which(is.na(Sygn
 # correct the values of these values
 Sygnal_AHR_genes_hgnc_annot_na[problem_rows_Sygnal,2] <- problem_rows_Sygnal
 Sygnal_AHR_genes_hgnc_annot_na[problem_rows_Sygnal,1] <- c("LOC100287036")
-write.table(Sygnal_AHR_genes_hgnc_annot_na, "./Results/AHR_signature/AHR_genes_Sygnal.txt", sep = "\t")
+write.table(Sygnal_AHR_genes_hgnc_annot_na, "../Results/AHR_signature/AHR_genes_Sygnal.txt", sep = "\t")
 
 ### nlp genes proofing after HGNC
 ## nlp_AHR_genes_hgnc_annot
@@ -206,16 +206,16 @@ nlp_AHR_genes_hgnc_annot_na2 <- nlp_AHR_genes_hgnc_annot_na2[-c(DEPP_idx, MT1E_i
 nlp_AHR_genes_hgnc_annot_na2 <- rbind(nlp_AHR_genes_hgnc_annot_na2, data.frame(V1=DEPP_gs,V2=DEPP_eids),
                                          data.frame(V1=MT1E_gs, V2=MT1E_eids), append=T)
 
-write.table(nlp_AHR_genes_hgnc_annot_na2, "./Results/AHR_signature/AHR_genes_nlp.txt", sep = "\t")
+write.table(nlp_AHR_genes_hgnc_annot_na2, "../Results/AHR_signature/AHR_genes_nlp.txt", sep = "\t")
 
 ## Combining signal and Sygnal dataframes
 AHR_genes_datasets <- c(Sygnal_AHR_genes_hgnc_annot_na$V1, signal_df_genes_all_hgnc_annot_na$V1)%>% .[which(duplicated(.)==FALSE)]
 
 AHR_genes_datasets <- dplyr::full_join(Sygnal_AHR_genes_hgnc_annot_na,signal_df_genes_all_hgnc_annot_na)
 
-write.table(as.data.frame(AHR_genes_datasets), "./Results/AHR_signature/AHR_genes_ds_S.txt", sep = "\t", col.names = F)
+write.table(as.data.frame(AHR_genes_datasets), "../Results/AHR_signature/AHR_genes_ds_S.txt", sep = "\t", col.names = F)
 
 ## Overlapping genes to be used as a signature for AHR
 overlapping_genes <- AHR_genes_datasets[AHR_genes_datasets$V1 %in% nlp_AHR_genes_hgnc_annot_na2$V1,]
 colnames(overlapping_genes) <- c("Gene", "EID")
-write.table(overlapping_genes, "./Results/AHR_signature/overlapping_AHR_signature_genes.txt", sep = "\t")
+write.table(overlapping_genes, "../Results/AHR_signature/overlapping_AHR_signature_genes.txt", sep = "\t")
