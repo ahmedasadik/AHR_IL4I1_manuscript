@@ -8,13 +8,13 @@ cd AHR_IL4I1_manuscript
 
 # creating download directories
 mkdir Zenodo_download
-cd Zenodo_download
+# please download the files using the shared link that you received till it becomes public
+# cd Zenodo_download
 # download necessary files from the zendo repository
 # wget https://zenodo.org/record/[doi-goes-here]/files/[file1.txt]
 # wget https://zenodo.org/record/[doi-goes-here]/files/[file2.txt]
 # wget https://zenodo.org/record/[doi-goes-here]/files/[file3.txt]
-
-cd ..
+# cd ..
 
 # creating workflow directories
 mkdir Results TCGAbiolinks_downloads
