@@ -117,8 +117,8 @@ df2_melt <- reshape::melt(df2)
 # CLL_modules_genes <- data.frame(genes=rownames(rma_exprs), module=CLL_TOMs_new$colors, stringsAsFactors = F)
 # saveRDS(CLL_modules_genes, "../Results/CLL_GSE58211/RDS/CLL_module_genes.rds")
 
-CLL_TOMs <- readRDS("./Resources/GSE58211/CLL_GSE58211_TOMs.rds")
-CLL_modules_genes <- readRDS("./Resources/GSE58211/CLL_module_genes.rds")
+CLL_TOMs <- readRDS("../Resources/GSE58211/CLL_GSE58211_TOMs.rds")
+CLL_modules_genes <- readRDS("../Resources/GSE58211/CLL_module_genes.rds")
 
 ## Correlating between the modules and AHR activation?
 cor_mat <- Hmisc::rcorr(as.matrix(CLL_TOMs$MEs), as.numeric(rma_gsva[1,]))
@@ -148,3 +148,43 @@ ggbarplot(cor_df,y = "cor",x="modules",fill = "Has_IL4I1",palette = c("black","r
 dev.off()
 
 ## Generating a circos plot
+ordered_cols <- c("grey","blue","pink","red")
+factors2 <- as.factor(rep(c("IL4I1", "IDO1","IDO2","TDO2","DDC","TPH1","TPH2", ordered_cols), 
+                          c(100,100,100,100,100,100,100, unlist(map(ordered_cols,function(x){
+                            length(CLL_modules_genes$module[CLL_modules_genes$module==x])})))
+))
+
+factors2 <- factor(factors2, levels = c("grey","blue","red","pink","IL4I1","IDO1","IDO2","TDO2","DDC","TPH1","TPH2"))
+to_subset <- as.character(levels(factors2))
+
+pdf("../Results/Figures/CLL_WGCNA_circos_plot_7.pdf", width = 8, height = 8)
+## plot outline
+circos.par(cell.padding = c(0, 0, 0, 0), gap.degree = 4)
+x_limits <- cbind(rep(0,length(to_subset)), table(factors2))
+circos.initialize(to_subset, xlim = x_limits)
+circos.track(ylim = c(0, 0.5), bg.border = NA, track.height=0.2,
+             panel.fun = function(x, y) {
+               x_p <- get.cell.meta.data("xlim")
+               y_p <- get.cell.meta.data("ylim")
+               circos.rect(x_p[1], y_p[1],x_p[2], y_p[2],
+                           col = ifelse(CELL_META$sector.index %in% colors(),CELL_META$sector.index, "white"),
+                           border = ifelse(CELL_META$sector.index %in% colors(),"black", NA))
+             })
+## add enzyme names
+circos.text(50, 0, labels="IL4I1", sector.index = "IL4I1", facing = "clockwise", niceFacing = T, col = "black", adj = c(-0.05, degree(1)))
+circos.text(50, 0, labels="IDO1", sector.index = "IDO1", facing = "clockwise", niceFacing = T, col = "black", adj = c(-0.05, degree(1)))
+circos.text(50, 0, labels="IDO2", sector.index = "IDO2", facing = "clockwise", niceFacing = T, col = "black", adj = c(-0.05, degree(1)))
+circos.text(50, 0, labels="TDO2", sector.index = "TDO2", facing = "clockwise", niceFacing = T, col = "black", adj = c(-0.05, degree(1)))
+circos.text(50, 0, labels="DDC", sector.index = "DDC", facing = "clockwise", niceFacing = T, col = "black", adj = c(-0.05, degree(1)))
+circos.text(50, 0, labels="TPH1", sector.index = "TPH1", facing = "clockwise", niceFacing = T, col = "black", adj = c(-0.05, degree(1)))
+circos.text(50, 0, labels="TPH2", sector.index = "TPH2", facing = "clockwise", niceFacing = T, col = "black", adj = c(-0.05, degree(1)))
+circos.link("IL4I1",point1 = c(0,100), "grey", point2 =c(12880,12980),  col = "grey",border = "black")
+circos.link("IDO1",point1 = c(0,100), "grey", point2 =c(12880,12980),  col = "grey",border = "black")
+circos.link("IDO2",point1 = c(0,100), "grey", point2 =c(12880,12980),  col = "grey",border = "black")
+circos.link("TDO2",point1 = c(0,100), "grey", point2 =c(12880,12980),  col = "grey",border = "black")
+circos.link("DDC",point1 = c(0,100), "grey", point2 =c(12880,12980),  col = "grey",border = "black")
+circos.link("TPH1",point1 = c(0,100), "grey", point2 =c(12880,12980),  col = "grey",border = "black")
+circos.link("TPH2",point1 = c(0,100), "grey", point2 =c(12880,12980),  col = "grey",border = "black")
+title("CLL_GSE58211",cex=0.5)
+circos.clear()
+dev.off()
