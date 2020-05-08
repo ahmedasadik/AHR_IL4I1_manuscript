@@ -1,5 +1,10 @@
 #!/bin/bash
 
+## CONDA SETUP for R.3.6.0/3.6.1 (although @ahmedsadik did local dev on 3.6.3)
+# conda create --name AHR_IL4I1_env
+# conda activate AHR_IL4I1_env
+# conda install r=3.6.0
+
 mkdir -p $HOME/AHR_IL4I1_workflows
 cd $HOME/AHR_IL4I1_workflows
 git clone https://github.com/ahmedasadik/AHR_IL4I1_manuscript.git
@@ -20,3 +25,6 @@ mkdir Zenodo_download
 mkdir Results TCGAbiolinks_downloads
 mkdir ./Results/AHR_signature ./Results/AHR_signature_validations ./Results/RDS ./Results/GlobalTest ./Results/TCGA_Circos_plots ./Results/TCGA_Circos_plots/Circos_plots_2 ./Results/TCGA_Circos_plots/Circos_plots_7 ./Results/Tables ./Results/Figures ./Results/GO_AAMs ./Results/GO_AAMs/BP_sim ./Results/GO_AAMs/BP
 mkdir ./TCGAbiolinks_downloads/TCGA_counts ./TCGAbiolinks_downloads/TCGA_counts/RDats ./TCGAbiolinks_downloads/TCGA_FPKM ./TCGAbiolinks_downloads/TCGA_FPKM/RDats
+
+# install R libraries and dependencies
+./prep_script.R
