@@ -37,6 +37,9 @@ TCGA_GSVA <- map(TCGA_GSVA, function(x){x$result})
 # TCGA_modules_genes
 TCGA_modules_genes <- readRDS("../Zenodo_download/TCGA_modules_genes.rds")
 
+# TCGA_MEs_GSVA_cors_pos_only_overlap_GT
+TCGA_MEs_GSVA_cors_pos_only_overlap_GT <- readRDS("../Zenodo_download/TCGA_MEs_GSVA_cors_pos_only_overlap_GT.rds")
+
 #######################################################################
 ## Since IDO1 and TDO2 are not driving AHR activation in all tumors, ##
 ## what is the status of other enzymes of Trp degradation pathway?   ##
