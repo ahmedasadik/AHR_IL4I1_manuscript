@@ -169,7 +169,7 @@ IPS_function <- function(dge2,tcga_names){
   
   ## Read IPS genes and corresponding weights from tab-delimited text file "IPS_genes.txt"
   # For different 
-  IPSG<-read.table("./Resources/IPS_genes.txt",header=TRUE, sep="\t", dec = ".",check.names=FALSE)
+  IPSG<-read.table("../Resources/IPS_genes.txt",header=TRUE, sep="\t", dec = ".",check.names=FALSE)
   IPSG$GENE <- gsub("\\-","\\.",IPSG$GENE)
   IPSG$NAME <- gsub("\\-","\\.",IPSG$NAME)
   
