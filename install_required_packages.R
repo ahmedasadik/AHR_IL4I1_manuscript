@@ -2,6 +2,7 @@
 
 ## script to automate download of required libraries/packages/dependencies
 ## the CRAN mirror is set to http://cran.us.r-project.org, which can be changed
+## add ", INSTALL_opts = '--no-lock'" if there are problems installing libraries
 
 ipak <- function(pkg){
   new.pkg <- pkg[!(pkg %in% installed.packages()[, "Package"])]
