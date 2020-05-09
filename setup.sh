@@ -3,7 +3,12 @@
 ## CONDA SETUP for R.3.6.0/3.6.1 (although @ahmedsadik did local dev on 3.6.3)
 # conda create --name AHR_IL4I1_env
 # conda activate AHR_IL4I1_env
-# conda install r=3.6.0
+# conda install r=3.6.0 python mofapy
+
+##  Installing MOFA dependencies
+# you can install this via several methods: https://github.com/bioFAM/MOFA#installation
+# conda: conda install mofapy
+# pip: pip install mofapy
 
 mkdir -p $HOME/AHR_IL4I1_workflows
 cd $HOME/AHR_IL4I1_workflows
