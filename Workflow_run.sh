@@ -4,7 +4,7 @@
 cd AHR_signature_scripts
 ./IDO1_TDO2_associate_w_AHR_signature_activation.R
 ./WGCNA_modules_Associating_w_AHR_activation_AAMs.R
-cd..
+cd ..
 
 ## Run the IL4I1_scripts
 cd IL4I1_scripts
@@ -15,4 +15,4 @@ cd IL4I1_scripts
 ./IL4I1_survival_outcome_TCGA.R
 ./Riaz_etal_ICB_dataset.R
 ./Weisser_GSE58211_relapsed_CLL_dataset.R
-cd..
+cd ..
