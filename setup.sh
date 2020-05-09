@@ -7,7 +7,7 @@
 
 ##  Installing MOFA dependencies
 # you can install this via several methods: https://github.com/bioFAM/MOFA#installation
-# conda: conda install mofapy
+# conda: conda install -c bioconda mofapy
 # pip: pip install mofapy
 
 mkdir -p $HOME/AHR_IL4I1_workflows
