@@ -26,3 +26,8 @@ cd IL4I1_scripts_microarrays
 ./IL4I1_shAHR.R
 ./KynA_FICZ.R
 cd ..
+
+## Run the Mouse CLL data
+cd GSE66858
+./GSE66858_CLL_mouse_spleens.R
+cd ..
