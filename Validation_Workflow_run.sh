@@ -1,5 +1,10 @@
 #!/bin/bash
 
+# download the necessary files from the zendo repository and untar it here
+# it comes with the right directory tree needed for the validation scripts
+# wget https://zenodo.org/record/[doi-goes-here]/files/[file1.txt]
+tar -xf Validation_datasets.tar
+
 ## Run the IL4I1_scripts
 cd Validation_scripts
 ./GSE102045_FICZ_Th17.R
