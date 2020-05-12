@@ -13,15 +13,17 @@ library(AffyGEx)
 
 data("hgnc","msig.data.lists")
 
-setwd("./I3P/")
+## add AHR signature genes
+AHR_genes <- read.delim("../Resources/overlapping_AHR_signature_genes.txt", sep = "\t")
 
+#### loading experimental condition covariates ####
+exp_data_variables <- read.delim("../IL4I1_scripts_microarrays_metadata/I3P_SR1_exp_data_variables.txt", sep = "\t", stringsAsFactors = F)
+
+setwd("../Results/IL4I1_microarrays/I3P_SR1/")
 dir.create("./RDS")
 dir.create("./TopTables")
 dir.create("./GSA")
 dir.create("./Figures")
-
-## add AHR signature genes
-AHR_genes <- read.delim("/media/ahmed/Elements/AHR_IL4I1_workflows/AHR_IL4I1_manuscript/Resources/overlapping_AHR_signature_genes.txt", sep = "\t")
 
 #### generate raw_cel dataset ####
 raw_path <- "./CEL/"
@@ -32,9 +34,6 @@ saveRDS(raws_cel, "./RDS/raws_cel.rds")
 #### Assigning sample names ####
 s_names <- gsub("\\_\\HuGene\\-2\\_0\\-st\\_\\.CEL","",sampleNames(raws_cel)) %>%  gsub("GSM.([0-9]*_)","",.) %>% gsub("-_","",.)
 sampleNames(raws_cel) <- s_names
-
-#### loading experimental condition covariates ####
-exp_data_variables <- read.delim("./I3P_SR1_exp_data_variables.txt", sep = "\t", stringsAsFactors = F)
 
 #### Create phenodata & metadata ####
 condition <- c(rep(c("ctrl", "I3P", "I3P_SR1", "SR1"),2), rep(c("ctrl", "I3P", "SR1", "I3P_SR1"), 2))

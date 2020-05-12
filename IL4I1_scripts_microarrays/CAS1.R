@@ -13,18 +13,17 @@ library(AffyGEx)
 
 data("hgnc","msig.data.lists")
 
-setwd("./CAS1/")
+## add AHR signature genes
+AHR_genes <- read.delim("../Resources/overlapping_AHR_signature_genes.txt", sep = "\t")
 
+#### loading experimental condition covariates ####
+exp_data_variables <- read.delim("../IL4I1_scripts_microarrays_metadata/CAS1_exp_data_variables.txt",sep = "\t")
+
+setwd("../Results/IL4I1_Microarrays/CAS1/")
 dir.create("./RDS")
 dir.create("./TopTables")
 dir.create("./GSA")
 dir.create("./Figures")
-
-## add AHR signature genes
-AHR_genes <- read.delim("/media/ahmed/Elements/AHR_IL4I1_workflows/AHR_IL4I1_manuscript/Resources/overlapping_AHR_signature_genes.txt", sep = "\t")
-
-#### loading experimental condition covariates ####
-exp_data_variables <- read.delim("./CAS1_exp_data_variables.txt",sep = "\t")
 
 #### generate raw_cel dataset ####
 raw_path <- "./CEL/"

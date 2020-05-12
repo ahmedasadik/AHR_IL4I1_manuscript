@@ -30,6 +30,8 @@ mkdir Zenodo_download
 mkdir Results TCGAbiolinks_downloads
 mkdir ./Results/AHR_signature ./Results/AHR_signature_validations ./Results/RDS ./Results/GlobalTest ./Results/TCGA_Circos_plots ./Results/TCGA_Circos_plots/Circos_plots_2 ./Results/TCGA_Circos_plots/Circos_plots_7 ./Results/Tables ./Results/Figures ./Results/GO_AAMs ./Results/GO_AAMs/BP_sim ./Results/GO_AAMs/BP
 mkdir ./TCGAbiolinks_downloads/TCGA_counts ./TCGAbiolinks_downloads/TCGA_counts/RDats ./TCGAbiolinks_downloads/TCGA_FPKM ./TCGAbiolinks_downloads/TCGA_FPKM/RDats
+mkdir ./Results/IL4I1_microarrays ./Results/IL4I1_microarrays/CAS1 ./Results/IL4I1_microarrays/CAS1/CEL ./Results/IL4I1_microarrays/Metabolites ./Results/IL4I1_microarrays/Metabolites/CEL ./Results/IL4I1_microarrays/I3C ./Results/IL4I1_microarrays/I3C/CEL
+mkdir ./Results/IL4I1_microarrays/I3P_SR1 ./Results/IL4I1_microarrays/I3P_SR1/CEL ./Results/IL4I1_microarrays/IL4I1_shAHR ./Results/IL4I1_microarrays/IL4I1_shAHR/CEL ./Results/IL4I1_microarrays/KynA_FICZ ./Results/IL4I1_microarrays/KynA_FICZ/CEL
 
 # install R libraries and dependencies
-./prep_script.R
+./install_reqquired_packages.R

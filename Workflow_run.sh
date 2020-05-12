@@ -16,3 +16,13 @@ cd IL4I1_scripts
 ./Riaz_etal_ICB_dataset.R
 ./Weisser_GSE58211_relapsed_CLL_dataset.R
 cd ..
+
+## Run the IL4I1_scripts_microarrays
+cd IL4I1_scripts_microarrays
+./CAS1.R
+./HPP_PP_I3P_metabolites.R
+./I3C.R
+./I3P_SR1.R
+./IL4I1_shAHR.R
+./KynA_FICZ.R
+cd ..

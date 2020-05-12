@@ -13,8 +13,13 @@ library(AffyGEx)
 
 data("hgnc","msig.data.lists")
 
-setwd("./IL4I1_shAHR/")
+## add AHR signature genes
+AHR_genes <- read.delim("../Resources/overlapping_AHR_signature_genes.txt", sep = "\t")
 
+#### loading experimental condition covariates ####
+exp_data_variables <- read.delim("../IL4I1_scripts_microarrays_metadata/IL4I1_shAHR_exp_data_variables.txt",sep = "\t", stringsAsFactors = F)
+
+setwd("../Results/IL4I1_microarrays/IL4I1_shAHR/")
 dir.create("./RDS")
 dir.create("./TopTables")
 dir.create("./GSA")
@@ -29,9 +34,6 @@ saveRDS(raws_cel, "./RDS/raws_cel.rds")
 #### Assigning sample names ####
 s_names <- gsub("\\_\\HuGene\\-2\\_0\\-st\\_\\.CEL","",sampleNames(raws_cel)) %>%  gsub("GSM.([0-9]*_)","",.)
 sampleNames(raws_cel) <- s_names
-
-#### loading experimental condition covariates ####
-exp_data_variables <- read.delim("./IL4I1_shAHR_exp_data_variables.txt",sep = "\t", stringsAsFactors = F)
 
 #### Create phenodata & metadata ####
 condition <- exp_data_variables$group
@@ -87,7 +89,6 @@ tts_2sd_u$IL4I1_AHR_Dep_SH2 <- annot_hgcn_FUN(tts_2sd_u$IL4I1_AHR_Dep_SH2, hgnc 
 tts_2sd_u$SH2_no_IL4I1 <- annot_hgcn_FUN(tts_2sd_u$SH2_no_IL4I1, hgnc = hgnc)
 
 ## add AHR signature genes
-AHR_genes <- read.delim("/media/ahmed/Elements/AHR_IL4I1_workflows/AHR_IL4I1_manuscript/Resources/overlapping_AHR_signature_genes.txt", sep = "\t")
 tts_2sd_u_AHR <- map(tts_2sd_u, function(x,y){
   x$AHR_target <- match(x$hGene, y)
   x$AHR_target[!is.na(x$AHR_target)] <- "yes"
