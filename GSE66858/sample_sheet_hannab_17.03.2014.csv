@@ -1,0 +1,24 @@
+[HEADER],
+Investigator Name,Hanna, Bola
+Phone,+49 6221 42 4584
+EMail,b.hanna@dkfz-heidelberg.de
+KSt,B060
+Project Name,none
+Date,17.03.2014
+Species,Mouse
+Source,tissue,total RNA
+
+[DATA],,,,,,
+Sample_Name,Sample_Well,Sample_Plate,Sample_Group,Pool_ID,Sentrix_ID,Sentrix_Position
+A4_2,,,TCL1,,9377359021,A
+A4_3,,,TCL1,,9377359021,B
+A3_3,,,TCL1,,9377359021,C
+A4_5,,,TCL1,,9377359021,D
+A5_4,,,TCL1,,9377359021,E
+WT monocyte pool 1,,,WT,,9377359021,F
+WT monocyte pool 2,,,WT,,9388211094,A
+WT monocyte pool 3,,,WT,,9388211094,B
+WT monocyte pool 4,,,WT,,9388211094,C
+WT monocyte pool 5,,,WT,,9388211094,D
+WT 503 PC macrophages,,,PC,,9388211094,E
+519 PC macrophages,,,PC,,9388211094,F
