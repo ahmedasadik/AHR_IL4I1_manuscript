@@ -41,33 +41,32 @@ GSE48843_metadata <- lapply(GSMList(GSE48843),function(x) {Meta(x)})
 GSE48843_pt_dat <- as.data.frame(sapply(GSE48843_metadata, function(x){
   v1 <- strsplit(x$characteristics_ch1, ": ") %>% map(.,function(a){a[[2]]}) %>% unlist()
   c(v1,x$title)
-  }))%>%t() %>% as.data.frame()
+}))%>%t() %>% as.data.frame()
 colnames(GSE48843_pt_dat) <- c("treatments","time","source","sample_ID")
 GSE48843_pt_dat$donor <- gsub("^([0-9]-)|^([0-9].-)","",GSE48843_pt_dat$sample_ID)%>%gsub("\\-.*","",.)
-GSE48843_pt_dat2 <- GSE48843_pt_dat[grep("^DMSO|^none|^(SR1_500nM)",GSE48843_pt_dat$treatments),] %>% .[-grep("BIO",.$treatments),]
-GSE48843_pt_dat2$group <- ifelse(grepl("none",GSE48843_pt_dat2$treatments),"ctrl",ifelse(grepl("DMSO",GSE48843_pt_dat2$treatments),"DMSO","SR1"))
-GSE48843_pt_dat2 <- GSE48843_pt_dat2[GSE48843_pt_dat2$source=="peripheral blood",]
+GSE48843_pt_dat2 <- GSE48843_pt_dat[grep("^DMSO|^(SR1_500nM)",GSE48843_pt_dat$treatments),] %>% .[-grep("BIO",.$treatments),]
+GSE48843_pt_dat2$group <- ifelse(grepl("DMSO",GSE48843_pt_dat2$treatments),"DMSO","SR1")
 
 ## Create DGE
 counts_df2 <- counts_df[,match(rownames(GSE48843_pt_dat2),colnames(counts_df))]
-dge_l <- DGEList(counts_df2)
+dge_l <- DGEList((counts_df2))
 keep_l <- filterByExpr(dge_l)
 dge_l <- dge_l[keep_l,,keep.lib.size=FALSE]
 dge_l <- calcNormFactors(dge_l)
 v_l <- voom(dge_l, plot=FALSE)
 
 ## Perform DGE
-design <- model.matrix(~group+donor, GSE48843_pt_dat2)
+design <- model.matrix(~0+group+donor, GSE48843_pt_dat2)
 colnames(design) <- gsub("group","",colnames(design)) %>% gsub("\\(|\\)","",.)
 
 fit <- lmFit(v_l, design)
-cm <- makeContrasts(SR1-DMSO,levels = design)
+cm <- makeContrasts(SR1-DMSO, levels = design)
 fit2 <- contrasts.fit(fit, contrasts = cm)
-fit2 <- eBayes(fit2, robust = T)
-tt_u_l <- topTable(fit2, adjust="BH", number = Inf)
+fit2 <- eBayes(fit2)
+tt_u_l <- topTable(fit2, coef = 1, adjust="BH", number = Inf)
 
 ## Barcodeplot
-index_vector1 <- tt_u_l$ID %in% AHR_genes$Gene
+index_vector1 <- tt_u_l$ID%in% AHR_genes$Gene
 pdf("../Results/Validations/GSE48843_AML/barcodeplot_AML.pdf",width = 12, height = 8)
 barcodeplot(tt_u_l$t, index_vector1, main="GSE48843_SR1_AML")
 dev.off()
@@ -90,6 +89,6 @@ seq_roast_FUN <- function(v_eset, glist, des_mat, cont_mat, ...){
   AHR_roast_df$PValue.Mixed <- AHR_roast_df$FDR.Mixed <- round(AHR_roast$p.value$P.Value[4],4)
   AHR_roast_df
 }
-AHR_roast_res <- seq_roast_FUN(v_l, AHR_genes$Gene, design, cm[,1], robust=TRUE)
+AHR_roast_res <- seq_roast_FUN(v_l, AHR_genes$Gene, design, cm[,1])
 
 write.table(AHR_roast_res, "../Results/Validations/GSE48843_AML/GSE102045_roast_res.txt", sep = "\t")
