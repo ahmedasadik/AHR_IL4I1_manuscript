@@ -116,7 +116,6 @@ write.table(all_roast, "./GSA/AHR_enrichment_AHR_KD_all.txt", row.names = F, sep
 
 ## barcodeplots
 pdf("./Figures/barcodeplot_m_t_stat_AHR_KD_all.pdf", width = 8, height = 12)
-par(mfrow=c(3,2))
 barcodeplot(tts_2sd_u_AHR$IL4I1_only$t, ids2indices(gene.sets = AHR_genes$Gene, identifiers = tts_2sd_u_AHR$IL4I1_only$hGene)[[1]],main=all_roast$Condition[1])
 barcodeplot(tts_2sd_u_AHR$IL4I1_AHR_Dep_SH1$t, ids2indices(gene.sets = AHR_genes$Gene, identifiers = tts_2sd_u_AHR$IL4I1_AHR_Dep_SH1$hGene)[[1]],main=all_roast$Condition[2])
 barcodeplot(tts_2sd_u_AHR$SH1_no_IL4I1$t, ids2indices(gene.sets = AHR_genes$Gene, identifiers = tts_2sd_u_AHR$SH1_no_IL4I1$hGene)[[1]],main=all_roast$Condition[3])
