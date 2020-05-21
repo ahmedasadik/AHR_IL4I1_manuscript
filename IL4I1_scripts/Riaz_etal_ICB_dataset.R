@@ -15,7 +15,6 @@ library(purrr)
 library(ggpubr)
 library(ggplot2)
 library(RColorBrewer)
-library(extrafont)
 library(grid)
 library(gridExtra)
 

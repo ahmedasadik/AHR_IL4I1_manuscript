@@ -21,7 +21,7 @@ cd ..
 cd IL4I1_scripts_microarrays
 ./CAS1.R
 ./HPP_PP_I3P_metabolites.R
-./I3C.R
+./I3A.R
 ./I3P_SR1.R
 ./IL4I1_shAHR.R
 ./KynA_FICZ.R
@@ -30,4 +30,4 @@ cd ..
 ## Run the Mouse CLL data
 cd GSE66858
 ./GSE66858_CLL_mouse_spleens.R
-cd ..
+cd .. 

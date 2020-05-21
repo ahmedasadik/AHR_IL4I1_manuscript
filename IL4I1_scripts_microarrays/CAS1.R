@@ -19,7 +19,7 @@ AHR_genes <- read.delim("../Resources/overlapping_AHR_signature_genes.txt", sep 
 #### loading experimental condition covariates ####
 exp_data_variables <- read.delim("../IL4I1_scripts_microarrays_metadata/CAS1_exp_data_variables.txt",sep = "\t")
 
-setwd("../Results/IL4I1_Microarrays/CAS1/")
+setwd("../Results/IL4I1_microarrays/CAS1/")
 dir.create("./RDS")
 dir.create("./TopTables")
 dir.create("./GSA")
@@ -46,7 +46,7 @@ metadata <- data.frame(labelDescription=c('sample_id', 'condition', 'date_exp'),
 pd <- new('AnnotatedDataFrame', data=info, varMetadata=metadata)
 phenoData(raws_cel) <- pd
 
-rma_2sd <- gen_rma_cel_nocross_median_FUN(raws_cel, sd_val = 2,snames = s_names,ct_off = 0.75)
+rma_2sd <- gen_rma_FUN(raws_cel, sd_val = 2,snames = s_names,ct_off = 0.75)
 
 #### DGE ####
 # Design matrix

@@ -2,8 +2,8 @@
 
 #################################################
 ## Project: AHR IL4I1
-## Origin: https://github.com/ahmedasadik/AHR_IL4I1_manuscript/AHR_signature/
-## Date: Oct 2018
+## Origin: https://github.com/ahmedasadik/AHR_IL4I1_manuscript
+## Date: May 2020
 ## Author: Ahmed Sadik (a.sadik@dkfz.de)
 ##
 ## Description
@@ -101,7 +101,7 @@ Sygnal_AHR_genes <- unlist(mget(unique(Sygnal_AHR_eIDs), org.Hs.egSYMBOL,ifnotfo
 ###################################
 ## Annotation update as per HGNC ##
 ###################################
-# This was downloaded directly from HGNC on 04-12-2017
+# This was downloaded directly from HGNC
 hgnc <- read.delim("../Resources/human_hgnc_annotation_file.txt")
 
 ## This is performed for all three target types
@@ -131,7 +131,7 @@ signal_df_genes_all_hgnc_annot_na <- as.data.frame(signal_df_genes_all_hgnc_anno
 rownames(signal_df_genes_all_hgnc_annot_na) <- rownames(signal_df_genes_all_hgnc_annot)
 problem_rows_signal <- rownames(signal_df_genes_all_hgnc_annot_na)[which(is.na(signal_df_genes_all_hgnc_annot_na[,1]))]
 
-## retrieve the original entries from the signal_df dataframe and check the PMIDs
+## retrieve the original entries from the signal_df dataframe and check the PMIDs. This needed because some of the genes were imported with the wrong characters.
 problem_df_signal <- signal_df[signal_df$gene_sym %in% problem_rows_signal,]
 signal_to_correct <- c("FBX027", "DDlT4", "SLC3SG5", "C60rf132","TNAP", "TMDCII", "SPANXB2", "PLXNA4A", "PLXN3",
                        "NALP1", "C9orf79", "C9orf14", "C21orf42", "LOC285593", "C14orf166B", "SFRS2IP",

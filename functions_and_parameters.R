@@ -2,12 +2,12 @@
 
 #################################################
 ## Project: AHR IL4I1
-## Origin: https://github.com/ahmedasadik/Project_AHR_LAAO/tree/master/AHR_scripts
-## Date: Oct 2018
+## Origin: https://github.com/ahmedasadik/AHR_IL4I1_manuscript
+## Date: May 2020
 ## Author: Ahmed Sadik (a.sadik@dkfz.de)
 ##
 ## Description
-## This script describes validating the AHR signature in the dataset GSE28878
+## This script describes the functions and parameters needed
 ################################################
 
 #################################################
@@ -127,7 +127,7 @@ annt_fun <- function(sig_diff_s, l){
   lbl
 }
 
-## Plot WGCNA circos plots (revise the plotting functions)
+## Plot WGCNA circos plots
 WGCNA_Circ_plot_FUN <- function(i, g_mats,  mod_w_enz, ttl, save_path, enz_vec){
   ## Color function
   col_fun = colorRamp2(c(-8, 0, 8), c("blue", "white", "red"))
@@ -187,7 +187,7 @@ group_no_z_FUN <- function(x,y){
   group
 }
 
-# Perform gene set testing using roast (developed by Gordon Smyth)
+# Perform gene set testing using roast (PMID: 20610611)
 GSA_roast_hi_lo_grps_FUN <- function(cnts,dge,goi,glist,sd_val){
   OV_TDO2_idx <- which(rownames(cnts)==goi)
   OV_TDO2_vals <- cnts[OV_TDO2_idx,]
@@ -223,24 +223,6 @@ GSA_roast_hi_lo_grps_FUN <- function(cnts,dge,goi,glist,sd_val){
 
 # Plotting functions
 # plot annotation function
-annt_fun <- function(sig_diff_s, l){
-  lbl <- vector("character", length = l)
-  for (i in seq_along(sig_diff_s)){
-    if(sig_diff_s[i] > 0.05){
-      lbl[i] <- "ns"
-    } else if (sig_diff_s[i] < 0.05 & sig_diff_s[i] > 0.01){
-      lbl[i] <- "*"
-    } else if (sig_diff_s[i] <= 0.01 & sig_diff_s[i] > 0.001){
-      lbl[i] <- "**"
-    } else if (sig_diff_s[i] <= 0.001 & sig_diff_s[i] > 0.0001){
-      lbl[i] <- "***"
-    } else if (sig_diff_s[i] <= 0.0001){
-      lbl[i] <- "****"
-    }
-  }
-  lbl
-}
-
 dfs_to_plot_FUN <- function(df,ttl){
   df_melt <- reshape::melt(df)
   comp_means_res <- compare_means(formula = value~cluster, data=df_melt) %>%  as.data.frame()

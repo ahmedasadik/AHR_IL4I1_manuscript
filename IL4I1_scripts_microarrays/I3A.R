@@ -41,7 +41,7 @@ rownames(info) <- s_names
 metadata <- data.frame(labelDescription=c('sample_id', 'condition'), channel=factor('_ALL_'))
 pd <- new('AnnotatedDataFrame', data=info, varMetadata=metadata)
 phenoData(raws_cel) <- pd
-rma_2sd <- gen_rma_cel_nocross_median_FUN(raws_cel, sd_val = 2, snames = s_names, ct_off = 0.25)
+rma_2sd <- gen_rma_FUN(raws_cel, sd_val = 2, snames = s_names, ct_off = 0.25)
 
 #### DGE ####
 # Design matrix
