@@ -17,9 +17,9 @@ data("hgnc","msig.data.lists")
 AHR_genes <- read.delim("../Resources/overlapping_AHR_signature_genes.txt", sep = "\t")
 
 #### loading experimental condition covariates ####
-exp_data_variables <- read.delim("../IL4I1_scripts_microarrays_metadata/I3C_exp_data_variables.txt", sep = "\t", stringsAsFactors = F)
+exp_data_variables <- read.delim("../IL4I1_scripts_microarrays_metadata/I3A_exp_data_variables.txt", sep = "\t", stringsAsFactors = F)
 
-setwd("../Results/IL4I1_microarrays/I3C/")
+setwd("../Results/IL4I1_microarrays/I3A/")
 dir.create("./RDS")
 dir.create("./TopTables")
 dir.create("./GSA")
@@ -49,13 +49,13 @@ design_eset <- model.matrix(~0+condition+exp_data_variables$Date_performed)
 colnames(design_eset) <- gsub("condition","",colnames(design_eset))
 colnames(design_eset) <- gsub("\\$","_", colnames(design_eset))
 arr_wts <- arrayWeights(oligo::exprs(rma_2sd), design = design_eset)
-contrast_matrix <- makeContrasts(I3CA50uM-DMSO,levels = design_eset)
+contrast_matrix <- makeContrasts(I3A50uM-DMSO,levels = design_eset)
 
 ## DGE 2sd
 fit_2sd <- lmFit(rma_2sd, design = design_eset, weights = arr_wts)
 fit_2sd_cont <- contrasts.fit(fit_2sd, contrasts = contrast_matrix)
 fit_2sd_eB <- eBayes(fit_2sd_cont, trend = T, robust = T)
-saveRDS(fit_2sd_eB, "./RDS/fit_2sd_eB_U87_I3C.rds")
+saveRDS(fit_2sd_eB, "./RDS/fit_2sd_eB_U87_I3A.rds")
 
 ## all tts
 tt_2sd_all <- topTable(fit_2sd_eB, number = Inf,adjust.method = "BH")
@@ -73,8 +73,8 @@ tt_2sd_u_AHR <- map(list(tt_2sd_u_all), function(x,y){
   x$logPV <- -log10(x$P.Value)
   x
 }, y=AHR_genes$Gene)
-walk2(list(tt_2sd_u_AHR), paste("./TopTables/tt_2sd_","I3C","_AHR.txt",sep = ""), write.table, quote = F, sep = "\t")
-names(tt_2sd_u_AHR) <- "I3C"
+walk2(list(tt_2sd_u_AHR), paste("./TopTables/tt_2sd_","I3A","_AHR.txt",sep = ""), write.table, quote = F, sep = "\t")
+names(tt_2sd_u_AHR) <- "I3A"
 
 #### AHR signature enrichment
 roast_FUN <- function(tt_ids, cont_mat, gs, rma_obj, des_mat, arr_wts,...){
@@ -89,9 +89,9 @@ roast_FUN <- function(tt_ids, cont_mat, gs, rma_obj, des_mat, arr_wts,...){
 
 all_roast <- map2(tt_2sd_u_AHR, as.data.frame(contrast_matrix), roast_FUN, gs=AHR_genes$Gene, rma_obj=rma_2sd, des_mat=design_eset,arr_wts=arr_wts, trend=T, robust=T) %>% do.call(rbind,.)
 all_roast <- data.frame(Condition=rownames(all_roast), all_roast, stringsAsFactors = F)
-write.table(all_roast, "./GSA/AHR_enrichment_I3C.txt", row.names = F, sep = "\t")
+write.table(all_roast, "./GSA/AHR_enrichment_I3A.txt", row.names = F, sep = "\t")
 
-pdf("./Figures/barcodeplot_I3C_U87.pdf", width = 12, height = 8)
-index_vector <- tt_2sd_u_AHR$I3C$hGene %in% AHR_genes$Gene
-barcodeplot(tt_2sd_u_AHR$I3C$t, index_vector, main=all_roast$Condition[1])
+pdf("./Figures/barcodeplot_I3A_U87.pdf", width = 12, height = 8)
+index_vector <- tt_2sd_u_AHR$I3A$hGene %in% AHR_genes$Gene
+barcodeplot(tt_2sd_u_AHR$I3A$t, index_vector, main=all_roast$Condition[1])
 dev.off()
