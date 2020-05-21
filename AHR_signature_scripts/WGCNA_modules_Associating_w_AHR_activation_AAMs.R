@@ -1,15 +1,15 @@
 #!/usr/bin/env Rscript
 
 #################################################
-## Project: AHR LAAO
-## Origin: https://github.com/ahmedasadik/Project_AHR_LAAO/tree/master/AHR_scripts
-## Date: Oct 2018
+## Project: AHR IL4I1
+## Origin: https://github.com/ahmedasadik/AHR_IL4I1_manuscript
+## Date: May 2020
 ## Author: Ahmed Sadik (a.sadik@dkfz.de)
 ##
 ## Description
 ## This script describes how modules associating with AHR activation are defined.
 ## This is achieved by testing the association of AHR activation (GSVA scores) with the WGCNA modules.
-## To overcome bias, we will try two different methods and take the overlap between them.
+## To overcome bias, we will use two different methods and take the overlap between them.
 ## Following this, circos plots are generated showing the presence of Trp catabolizing enzymes in the WGCNA modules with positive associations with AHR activation (AAMs)
 #################################################
 

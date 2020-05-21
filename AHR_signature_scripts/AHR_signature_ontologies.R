@@ -2,8 +2,8 @@
 
 #################################################
 ## Project: AHR IL4I1
-## Origin: https://github.com/ahmedasadik/AHR_IL4I1_manuscript/AHR_signature/
-## Date: Oct 2018
+## Origin: https://github.com/ahmedasadik/AHR_IL4I1_manuscript
+## Date: May 2020
 ## Author: Ahmed Sadik (a.sadik@dkfz.de)
 ##
 ## Description
@@ -46,6 +46,7 @@ go_to_plot_BP$p.adjust <- gsub(",","\\.",go_to_plot_BP$p.adjust) %>% as.numeric(
 go_to_plot_BP$logpv <- -log10(go_to_plot_BP$p.adjust)
 go_to_plot_BP$GO_groups <- factor(go_to_plot_BP$GO_groups)
 
+## Create an empty bar vector for the space between the ontology groups
 empty_bar <- 4
 to_add <- data.frame(matrix(NA, empty_bar*nlevels(go_to_plot_BP$GO_groups), ncol(go_to_plot_BP)) )
 colnames(to_add) <- colnames(go_to_plot_BP)

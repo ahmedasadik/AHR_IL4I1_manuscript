@@ -2,8 +2,8 @@
 
 #################################################
 ## Project: AHR IL4I1
-## Origin: https://github.com/ahmedasadik/AHR_IL4I1_manuscript/AHR_signature/
-## Date: Oct 2018
+## Origin: https://github.com/ahmedasadik/AHR_IL4I1_manuscript
+## Date: May 2020
 ## Author: Ahmed Sadik (a.sadik@dkfz.de)
 ##
 ## Description

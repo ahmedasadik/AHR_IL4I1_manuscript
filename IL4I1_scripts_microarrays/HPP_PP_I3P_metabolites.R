@@ -1,13 +1,13 @@
 #!/usr/bin/env Rscript
 
 #################################################
-## Project: AHR LAAO
-## Origin: https://github.com/ahmedasadik/Project_AHR_LAAO/tree/master/AHR_scripts
-## Date: Oct 2018
+## Project: AHR IL4I1
+## Origin: https://github.com/ahmedasadik/AHR_IL4I1_manuscript
+## Date: May 2020
 ## Author: Ahmed Sadik (a.sadik@dkfz.de)
 ##
 ## Description
-## This script describes the analysis of the IL4I1 ectopic eexpression and IL4I1_shAHR U87MG cells.
+## This script describes the analysis of the U87MG cells treated with PP, HPP and I3P.
 #################################################
 library(AffyGEx)
 library(ggrepel)
