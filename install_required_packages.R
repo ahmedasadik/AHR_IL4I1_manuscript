@@ -18,7 +18,7 @@ ipak_bc <- function(pkg){
 
 dep_packs <- c("BiocManager","limma", "purrr", "oligo", "pd.hugene.2.0.st", "RColorBrewer", "stringr","illuminaHumanv4.db","illuminaHumanv3.db",
                "affycoretools", "biomaRt", "GSEABase", "clusterProfiler", "ggplot2", "gplots", "hgu133plus2.db", "gcrma",
-               "org.Hs.eg.db", "sva", "parallel", "ggpubr", "reshape", "topGO", "remotes",
+               "org.Hs.eg.db", "sva", "parallel", "ggpubr", "reshape", "topGO", "remotes", "lumi",
                "WGCNA", "GEOquery", "edgeR", "rJava", "circlize", "ComplexHeatmap", "parallel",
                "dplyr", "xlsx", "corrplot", "psych", "Hmisc", "factoextra", "FactoMineR",
                "huex10stprobeset.db", "R.utils", "extrafonts", "ggbeeswarm", "survival", "survminer",

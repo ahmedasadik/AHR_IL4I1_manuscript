@@ -87,7 +87,6 @@ walk2(tts_2sd_u_AHR, paste("./TopTables/tt_2sd_",names(tts_2sd_u),"_AHR.txt",sep
 
 ## barcodeplots ##
 pdf("./Figures/barcodeplot_m_t_stat_AHR_FICZ_KynA_U87_shC.pdf", width = 8, height = 6)
-par(mfrow=c(1,2))
 map2(tts_2sd_u,c(1:2), function(x,i){
   index_vector <- x[,1] %in% AHR_genes$Gene
   barcodeplot(x$t, index_vector, main=names(tts_2sd_u)[i])

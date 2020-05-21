@@ -33,6 +33,7 @@ mkdir ./Results/Validations ./Results/Validations/GSE102045_Th17 ./Results/Valid
 mkdir ./TCGAbiolinks_downloads/TCGA_counts ./TCGAbiolinks_downloads/TCGA_counts/RDats ./TCGAbiolinks_downloads/TCGA_FPKM ./TCGAbiolinks_downloads/TCGA_FPKM/RDats
 mkdir ./Results/IL4I1_microarrays ./Results/IL4I1_microarrays/CAS1 ./Results/IL4I1_microarrays/CAS1/CEL ./Results/IL4I1_microarrays/Metabolites ./Results/IL4I1_microarrays/Metabolites/CEL ./Results/IL4I1_microarrays/I3A ./Results/IL4I1_microarrays/I3A/CEL
 mkdir ./Results/IL4I1_microarrays/I3P_SR1 ./Results/IL4I1_microarrays/I3P_SR1/CEL ./Results/IL4I1_microarrays/IL4I1_shAHR ./Results/IL4I1_microarrays/IL4I1_shAHR/CEL ./Results/IL4I1_microarrays/KynA_FICZ ./Results/IL4I1_microarrays/KynA_FICZ/CEL
+mkdir ./Results/GSE66858
 
 # install R libraries and dependencies
 ./install_required_packages.R
