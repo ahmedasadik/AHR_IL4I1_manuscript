@@ -110,7 +110,7 @@ KM_plots_IL4I1_age <- map(Patients_surv_dfs,function(a){
   p <- ggplot(data = ssurv) + geom_step(aes(time, surv, color = strata))+ggtitle(df$tumor[1])+
     theme_bw()+theme(panel.grid = element_blank())+labs(color="group")+
     scale_color_discrete(name="IL4I1 groups", labels=levels(df$group))+
-    annotate(x=200,y=0.5,geom="text",label=paste("p = ",round(p_val_max$p.value,4), sep = ""))
+    annotate(x=200,y=0.5,geom="text",label=paste("p = ",round(p_val_max$p.value,6), sep = ""))
 })
 
 pdf("../Results/Figures/IL4I1_OS_surv_km_age_adjusted.pdf", height = 8, width = 12)
@@ -159,7 +159,7 @@ KM_plots_TDO2_age <- map(Patients_surv_dfs_TDO2,function(a){
   p <- ggplot(data = ssurv) + geom_step(aes(time, surv, color = strata))+ggtitle(df$tumor[1])+
     theme_bw()+theme(panel.grid = element_blank())+labs(color="group")+
     scale_color_discrete(name="IL4I1 groups", labels=levels(df$group))+
-    annotate(x=200,y=0.5,geom="text",label=paste("p = ",round(p_val_max$p.value,5),sep = ""))
+    annotate(x=200,y=0.5,geom="text",label=paste("p = ",round(p_val_max$p.value,6),sep = ""))
 })
 
 pdf("../Results/Figures/TDO2_OS_surv_km_age_adjusted.pdf", height = 8, width = 12)
@@ -208,7 +208,7 @@ KM_plots_IDO1_age <- map(Patients_surv_dfs_IDO1,function(a){
   p <- ggplot(data = ssurv) + geom_step(aes(time, surv, color = strata))+ggtitle(df$tumor[1])+
     theme_bw()+theme(panel.grid = element_blank())+labs(color="group")+
     scale_color_discrete(name="IL4I1 groups", labels=levels(df$group))+
-    annotate(x=200,y=0.5,geom="text",label=paste("p = ",round(p_val_max$p.value,5),sep = ""))
+    annotate(x=200,y=0.5,geom="text",label=paste("p = ",round(p_val_max$p.value,6),sep = ""))
 })
 
 pdf("../Results/Figures/IDO1_OS_surv_km_age_adjusted.pdf", height = 8, width = 12)
