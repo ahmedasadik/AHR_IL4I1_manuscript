@@ -15,6 +15,7 @@ library(ggpubr)
 library(survival)
 library(survminer)
 library(RColorBrewer)
+library(maxstat)
 
 ## Source the functions and parameters files
 source("../functions_and_parameters.R")
@@ -33,7 +34,7 @@ trp_enz <- c("TDO2","IDO1","IL4I1")%>%.[order(.)]
 
 ## IL4I1+IDO1+TDO2 Expression levels
 Imm_IL4I1_cnts <- map(TCGA_counts, function(x){
-   df <- x[rownames(x)%in%trp_enz,]%>%
+  df <- x[rownames(x)%in%trp_enz,]%>%
     t(.)%>%.[,match(trp_enz, colnames(.))]
   data.frame(df) %>% .[order(.$IL4I1),]
 })
@@ -97,6 +98,7 @@ saveRDS(test_coxph_assumption, "../Results/RDS/test_coxph_assumption_IL4I1.rds")
 KM_plots_IL4I1_age <- map(Patients_surv_dfs,function(a){
   df=a
   res.cox <- coxph(surv.obj ~ group + age, data = df)
+  p_val_max <- maxstat::maxstat.test(survival::Surv(OS.time, OS) ~ IL4I1, data = df, smethod = "LogRank", pmethod = "Lau92")
   # Create the new data  
   new_df <- with(df, data.frame(group = levels(df$group),
                                 age = unlist(map(levels(df$group),function(gl){mean(df$age[df$group==gl],na.rm = T)}))))
@@ -108,7 +110,7 @@ KM_plots_IL4I1_age <- map(Patients_surv_dfs,function(a){
   p <- ggplot(data = ssurv) + geom_step(aes(time, surv, color = strata))+ggtitle(df$tumor[1])+
     theme_bw()+theme(panel.grid = element_blank())+labs(color="group")+
     scale_color_discrete(name="IL4I1 groups", labels=levels(df$group))+
-    annotate(x=200,y=0.5,geom="text",label=paste("p = ",round(summary(res.cox)$coefficients[1,5],5),sep = ""))
+    annotate(x=200,y=0.5,geom="text",label=paste("p = ",round(p_val_max$p.value,4), sep = ""))
 })
 
 pdf("../Results/Figures/IL4I1_OS_surv_km_age_adjusted.pdf", height = 8, width = 12)
@@ -118,7 +120,7 @@ dev.off()
 # Save the IL4I1 cox model representations
 patients_cox_models_IL4I1_summaries <- map2(patients_cox_models_IL4I1, tcga_names, function(x,y){
   df <- summary(x)$coefficients
-  df <- data.frame(tumor=gsub("TCGA_","",y),vars=rownames(df), df, stringsAsFactors = F)
+  df <- data.frame(tumor=gsub("TCGA_","",y),vars=rownames(df), df,stringsAsFactors = F)
 }) %>% do.call(rbind,.)
 patients_cox_models_IL4I1_summaries$vars[patients_cox_models_IL4I1_summaries$vars=="grouphigh"] <- "IL4I1"
 patients_cox_models_IL4I1_summaries <- patients_cox_models_IL4I1_summaries[patients_cox_models_IL4I1_summaries$vars=="IL4I1",]
@@ -145,6 +147,7 @@ saveRDS(test_coxph_assumption_TDO2, "../Results/RDS/test_coxph_assumption_TDO2.r
 KM_plots_TDO2_age <- map(Patients_surv_dfs_TDO2,function(a){
   df=a
   res.cox <- coxph(surv.obj ~ group + age, data = df)
+  p_val_max <- maxstat::maxstat.test(survival::Surv(OS.time, OS) ~ TDO2, data = df, smethod = "LogRank", pmethod = "Lau92")
   # Create the new data  
   new_df <- with(df, data.frame(group = levels(df$group),
                                 age = unlist(map(levels(df$group),function(gl){mean(df$age[df$group==gl],na.rm = T)}))))
@@ -156,7 +159,7 @@ KM_plots_TDO2_age <- map(Patients_surv_dfs_TDO2,function(a){
   p <- ggplot(data = ssurv) + geom_step(aes(time, surv, color = strata))+ggtitle(df$tumor[1])+
     theme_bw()+theme(panel.grid = element_blank())+labs(color="group")+
     scale_color_discrete(name="IL4I1 groups", labels=levels(df$group))+
-    annotate(x=200,y=0.5,geom="text",label=paste("p = ",round(summary(res.cox)$coefficients[1,5],5),sep = ""))
+    annotate(x=200,y=0.5,geom="text",label=paste("p = ",round(p_val_max$p.value,5),sep = ""))
 })
 
 pdf("../Results/Figures/TDO2_OS_surv_km_age_adjusted.pdf", height = 8, width = 12)
@@ -193,6 +196,7 @@ saveRDS(test_coxph_assumption_IDO1, "../Results/RDS/test_coxph_assumption_IDO1.r
 KM_plots_IDO1_age <- map(Patients_surv_dfs_IDO1,function(a){
   df=a
   res.cox <- coxph(surv.obj ~ group + age, data = df)
+  p_val_max <- maxstat::maxstat.test(survival::Surv(OS.time, OS) ~ IDO1, data = df, smethod = "LogRank", pmethod = "Lau92")
   # Create the new data  
   new_df <- with(df, data.frame(group = levels(df$group),
                                 age = unlist(map(levels(df$group),function(gl){mean(df$age[df$group==gl],na.rm = T)}))))
@@ -204,7 +208,7 @@ KM_plots_IDO1_age <- map(Patients_surv_dfs_IDO1,function(a){
   p <- ggplot(data = ssurv) + geom_step(aes(time, surv, color = strata))+ggtitle(df$tumor[1])+
     theme_bw()+theme(panel.grid = element_blank())+labs(color="group")+
     scale_color_discrete(name="IL4I1 groups", labels=levels(df$group))+
-    annotate(x=200,y=0.5,geom="text",label=paste("p = ",round(summary(res.cox)$coefficients[1,5],5),sep = ""))
+    annotate(x=200,y=0.5,geom="text",label=paste("p = ",round(p_val_max$p.value,5),sep = ""))
 })
 
 pdf("../Results/Figures/IDO1_OS_surv_km_age_adjusted.pdf", height = 8, width = 12)
