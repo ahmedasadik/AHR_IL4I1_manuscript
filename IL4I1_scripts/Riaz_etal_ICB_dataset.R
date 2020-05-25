@@ -265,7 +265,7 @@ ggboxplot(naive_df%>% .[.$variable %in% c("IL4I1","IDO1","CP"),] ,
 dev.off()
 
 pdf("../Results/Figures/Riaz_ICB_dataset_treated_and_naive_IL4I1.pdf")
-ggboxplot(df_paired %>% .[.$PatientID!="Pt84",]%>% .[!is.na(.$Response),] %>% .[.$variable %in% c("IL4I1"),], "PreOn","value", color="PreOn",
+ggboxplot(df_paired %>% .[.$PatientID!="Pt84",]%>% .[!is.na(.$Response),] %>% .[.$variable %in% c("IL4I1"),], "PreOn","value", color="PreOn", outlier.shape = NA,
           facet.by = "Cohort", ncol=1, nrow=2, palette = c("blue","red"), add="jitter")+stat_compare_means(paired = T)
 dev.off()
 
