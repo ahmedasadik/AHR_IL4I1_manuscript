@@ -29,4 +29,4 @@ dep_packs <- c("BiocManager","limma", "purrr", "oligo", "pd.hugene.2.0.st", "RCo
 ipak(dep_packs)
 ipak_bc(dep_packs)
 
-remotes::install_github("ahmedasadik/AffyGEx", auth_token="5d53366564bec63272a087be6228eb7286085d8a", ref="v1.0.0")
+remotes::install_github("ahmedasadik/AffyGEx", ref="v1.0.0")
