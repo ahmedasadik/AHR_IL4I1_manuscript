@@ -19,12 +19,28 @@ cd AHR_IL4I1_manuscript
 # creating download directories
 mkdir Zenodo_download
 # please download the files using the shared link that you received till it becomes public
-# cd Zenodo_download
+cd Zenodo_download
 # download necessary files from the zendo repository
-# wget https://zenodo.org/record/[doi-goes-here]/files/[file1.txt]
-# wget https://zenodo.org/record/[doi-goes-here]/files/[file2.txt]
-# wget https://zenodo.org/record/[doi-goes-here]/files/[file3.txt]
-# cd ..
+wget https://zenodo.org/record/3778914/files/GT_GSVA_overlap_MEs.rds
+wget https://zenodo.org/record/3778914/files/GTEx_Analysis_2016-01-15_v7_RNASeQCv1.1.8_gene_tpm.gct
+wget https://zenodo.org/record/3778914/files/GTEX_annot
+wget https://zenodo.org/record/3778914/files/IPS_cell_types_gene_lists.rds
+wget https://zenodo.org/record/3778914/files/TCGA_coldata.rds
+wget https://zenodo.org/record/3778914/files/TCGA_counts.rds
+wget https://zenodo.org/record/3778914/files/TCGA_DGE.rds
+wget https://zenodo.org/record/3778914/files/TCGA_DGE_voom.rds
+wget https://zenodo.org/record/3778914/files/TCGA_DGE_voom_annot.rds
+wget https://zenodo.org/record/3778914/files/TCGA_fpkms_all.rds
+wget https://zenodo.org/record/3778914/files/TCGA_GSVA_scores_safely.rds
+wget https://zenodo.org/record/3778914/files/TCGA_GSVA_voom_28_cell_types_IPS.rds
+wget https://zenodo.org/record/3778914/files/TCGA_MEs_GSVA_cors.rds
+wget https://zenodo.org/record/3778914/files/TCGA_MEs_GSVA_GT_overlap_nodir.rds
+wget https://zenodo.org/record/3778914/files/TCGA_MEs_GSVA_GTs_not_null_sig05_nodir.rds
+wget https://zenodo.org/record/3778914/files/TCGA_modules_genes.rds
+wget https://zenodo.org/record/3778914/files/TCGA_sft.rds
+wget https://zenodo.org/record/3778914/files/TCGA_TOMS_bicor.rds
+wget https://zenodo.org/record/3778914/files/TCGA_TPMs.rds
+cd ..
 
 # creating workflow directories
 mkdir Results TCGAbiolinks_downloads

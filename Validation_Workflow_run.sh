@@ -2,8 +2,8 @@
 
 # download the necessary files from the zendo repository and untar it here
 # it comes with the right directory tree needed for the validation scripts
-# wget https://zenodo.org/record/[doi-goes-here]/files/[file1.txt]
-# tar -xf Validation_datasets.tar
+wget https://zenodo.org/record/3823348/files/Validation_datasets.tar
+tar -xf Validation_datasets.tar
 
 ## Run the IL4I1_scripts
 cd Validation_scripts
