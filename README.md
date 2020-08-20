@@ -1,7 +1,8 @@
 # AHR IL4I1 project scripts
-A collection of scripts used to generate a transcriptional signature for detecting the activation or inhibition states of the Aryl Hydrocarbon Receptor (AHR). In addition, the scripts allow identifying the tryptophan degrading enzyme Interleukin-4 Induced 1 (IL4I1) to activate the AHR through its tryptophan degradation products. These findings and corresponding figures are described in Sadik et al. 2020, "The L-amino acid oxidase IL4I1 is the key enzyme of a novel tryptophan catabolizing pathway and elicits tumor-promoting outcomes through the AHR".
+A collection of scripts used to generate a transcriptional signature for detecting the activation or inhibition states of the Aryl Hydrocarbon Receptor (AHR). In addition, the scripts allow identifying the tryptophan degrading enzyme Interleukin-4 Induced 1 (IL4I1) to activate the AHR through its tryptophan degradation products. These findings and corresponding figures are described in Sadik et al., IL4I1 Is a Metabolic Immune Checkpoint that Activates the AHR and Promotes Tumor Pro-gression, Cell (2020), https://doi.org/10.1016/j.cell.2020.07.038
 
 Within this repository we present the (R-) scripts to process and analyse the data as described in Sadik et al. 2020.
+
 
 ## Installation/Prerequisites
 
